@@ -89,22 +89,23 @@
 				width:100%;
 				margin-top:0px;
 				padding:0.5%;
-				border-bottom:#ccc solid 0.1em;
+				border-bottom:solid 0.1em #D6D6D6;
 				border-width:1px;
 				background:#F2F2F2;
 				position:fixed;
 				z-index:1000;
 			}
-			.logo{
+			.logo{				
+				width:4%;				
+				margin-left:0%;
 				float:left;
-				width:4%;
 			}
 			.logo img{
 				width:100%;
 			}
 			.other-links{
-				width:90%;
-				margin-left:10%;
+				float:left;
+				width:100%;
 				margin-top:0.3%;;
 			}
 			.other-links ul{
@@ -114,7 +115,7 @@
 			}
 			.link1{
 				float:left;
-				width:55%;
+				width:50%;
 				padding:0.5%;	
 			}
 			.link1 li{
@@ -143,7 +144,7 @@
 			.online-chat{
 				float:left;
 				width:10%;
-				margin-left:25%;
+				margin-left:27%;
 				text-align:center;
 				padding:0.5%;
 			}
@@ -152,13 +153,13 @@
 				margin-bottom:2px;
 			}
 			.online-chat .online a {
-				color:#e74c3c;
+				color:#27ae60;
 				font-size:13px;
 				font-weight:600;
 			}
 			.online-chat .online a:hover{
 				text-decoration:none;
-				color:#FC7777;
+				color:#27ae60;
 			}
 			.online-chat .offline a {
 				font-size:1.1em;
@@ -544,7 +545,7 @@
 				width:20%;
 				z-index:10;
 				bottom:0%;
-				right:1%;
+				right:0.5%;
 			}
 			.chat .chat-header{
 				border:#6c6c6d solid 0.1em ;
@@ -873,12 +874,10 @@ dsdssd dsadas sadsad dsad dsad dsad dsa dsadsa sadsa dsad sadsad.
 			</ul>
 		</div>		
 		<header>
-			<div class="logo">
-				<a href="home.php"><img src="img/logo.png"/></a>
-			</div>
 			<div class="other-links">
 				<div class="link1">
 					<ul>
+					<li><a href="home.php"><img src="img/home.png"/>  Home</a></li>
 					<li><a href="concepts.php"><img src="img/concept.png"/> Concepts</a></li>
 					<li><a href="discussions.php"><img src="img/discussion.png"/> Discussions</a></li>
 					<li><a href="circles.php"><img src="img/circles.png"/> Circles</a></li>
@@ -886,6 +885,9 @@ dsdssd dsadas sadsad dsad dsad dsad dsa dsadsa sadsa dsad sadsad.
 					<li><a href="mentee.php"><img src="img/mentee.png"/> Mentee</a></li>
 					</ul>
 				</div>
+			<div class="logo">
+				<a href="home.php"><img src="img/logo.png"/></a>
+			</div>
 				<div class="online-chat">
 					<?php
 						if($func->checkUserOnline($user) == 0){
@@ -894,7 +896,7 @@ dsdssd dsadas sadsad dsad dsad dsad dsa dsadsa sadsa dsad sadsad.
 </div>";
 						}else{
 							echo "<div class='online'>
-								<a href='#'><img src='img/online.png'/> ". $func->checkUserOnline($user)." online</a>
+								<a href='#'><img src='img/online2.png'/> ". $func->checkUserOnline($user)." online</a>
 							</div>";
 						}
 					?>

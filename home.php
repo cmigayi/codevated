@@ -481,7 +481,7 @@
 		font-size:13px;
 		font-weight:600;
 		color:#fff;
-		margin:0;
+		margin:0px;
 	}
 	.suggestions-content{
 		background:#fcfcfc;
@@ -506,7 +506,10 @@
 	}	
 	.mentor-img{
 		float:left;
-		width:100%;
+		width:90%;
+		border:#ddd solid 0.1em;
+		border-radius:9px;
+		overflow:hidden;		
 	}
 	.mentor-img img{
 		width:100%;
@@ -522,9 +525,9 @@
 	.add-mentor-div-right-top h4{
 		width:80%;
 		float:left;
-		color:#242424;
-		font-size:12px;
+		color:#3B3B3B;
 		font-weight:600;
+		font-size:13px;
 		margin-top:0px;
 		margin-bottom:0px;	
 	}
@@ -564,9 +567,9 @@
 		font-size:12px;
 	}
 	.add-mentor-btn a{
-		color:#000;
-		font-size:13px;
+		color:#3B3B3B;
 		font-weight:600;
+		font-size:13px;
 	}
 	.add-mentor-btn a:hover{
 		text-decoration:none;
@@ -898,7 +901,7 @@
 						<div class="add-mentor-div">
 						<div class="add-mentor-div-left">
 							<div class="mentor-img">
-								<img src="img/female_user.png"/>
+								<img src="img/cilo.jpg"/>
 							</div>
 						</div>
 						<div class="add-mentor-div-right">

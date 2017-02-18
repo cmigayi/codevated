@@ -29,7 +29,7 @@
 		}
 		
 		function getUserActivity($userID){
-			$sql = "SELECT * FROM activity WHERE user_id = '$userID' ORDER BY dateTime DESC LIMIT 7";
+			$sql = "SELECT * FROM activity WHERE user_id = '$userID' ORDER BY dateTime DESC LIMIT 10";
 			$q = mysql_query($sql)or die(mysql_error());
 			
 			echo "<ul>";
@@ -213,6 +213,13 @@
 			}else{
 				return false;
 			}
+		}
+		
+		function getSpecialityItem($specialityID){
+			$sql = "SELECT * FROM speciality WHERE speciality_id='$specialityID'";
+			$query = mysql_query($sql) or die(mysql_error());
+			
+			return mysql_fetch_array($query);
 		}		
 		
 		function getLatestPosts($limit){
@@ -345,7 +352,28 @@
 			$row = mysql_fetch_array($query);
 			
 			return $row;
-		}		
+		}
+
+		function getAllInterestCartegorySpeciality($specialityID){
+			$sql = "SELECT * FROM interest_cartegory WHERE speciality_id='$specialityID'";
+			$query = mysql_query($sql) or die(mysql_error());
+
+			while($row = mysql_fetch_array($query)){
+				echo "
+				<div class='item'>					
+					<div class='img'>
+						<img src='".$row['cartegory_icon']."'/>
+					</div>
+					<div class='item-name'>".
+						$row['cartegory_name']					
+					."</div>
+					<input name='' type='checkbox'/>				
+				</div>
+			";
+			}
+			echo "<div class='clear'></div>";
+		}
+		
 		function checkIfItsUserInterest($userID,$cartegoryID){
 			$sql = "SELECT * FROM user_interest WHERE user_id='$userID' AND interest_cartegory_id = '$cartegoryID'";			
 			$query = mysql_query($sql) or die(mysql_error());			

@@ -17,7 +17,7 @@
 		foreach($interests as $d){
 			$state = $func->postSpecialityInterestsOnSignUp($user,$d);
 			if($state == true){
-				header("Location: profile.php");
+				header("Location: interests.php");
 			}
 		}
 	}
