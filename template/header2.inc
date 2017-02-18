@@ -102,35 +102,9 @@
 			.logo img{
 				width:100%;
 			}
-			.search{
-				float:left;
-				width:30%;
-				margin-left:1%;
-				margin-top:0.3%;
-			}
-			.search form{
-				width:100%;
-			}
-			.search form input[type="text"]{
-				padding:1%;
-				width:100%;
-				font-size:14px;
-				border-radius:3px;
-				border:#E0E0E0 solid 0.1em;
-			}
-			.search form input[type="submit"]{
-				padding:0.9%;
-				width:7%;
-				border-radius:2px;
-				border:#71C951 solid 0.1em;
-				background:#8BDE6D;
-				color:#fff;
-				font-size:12px;
-				font-weight:600;
-			}
 			.other-links{
-				width:65%;
-				margin-left:35%;
+				width:90%;
+				margin-left:10%;
 				margin-top:0.3%;;
 			}
 			.other-links ul{
@@ -141,7 +115,7 @@
 			.link1{
 				float:left;
 				width:55%;
-				padding:0.5%;;	
+				padding:0.5%;	
 			}
 			.link1 li{
 				margin-left:3%;
@@ -149,11 +123,14 @@
 				display:inline;
 				text-align:center;
 			}
-			.link1 li a{				
-				font-size:1.1em;
+			.link1 li a{	
 				color:#3B3B3B;
 				font-weight:600;
 				font-size:13px;
+			}
+			.link1 li a img{
+				width:3%;
+				margin-bottom:2px;
 			}
 			.link1 li a:hover{
 				color:#4772b7;
@@ -165,14 +142,13 @@
 			}
 			.online-chat{
 				float:left;
-				width:15%;
-				margin-left:5%;
-				padding:0.5%;
-				border:#DBDBDB solid 0.1em;
+				width:10%;
+				margin-left:25%;
 				text-align:center;
+				padding:0.5%;
 			}
 			.online-chat img{
-				width:15%;
+				width:20%;
 				margin-bottom:2px;
 			}
 			.online-chat .online a {
@@ -185,17 +161,18 @@
 				color:#FC7777;
 			}
 			.online-chat .offline a {
-				color:#000;
-				font-size:13px;
+				font-size:1.1em;
+				color:#3B3B3B;
 				font-weight:600;
+				font-size:13px;
 			}
 			.link2{
 				width:10%;
 				margin-left:90%;
 			}
 			.link2 li{
-				margin-left:2.5%;
-				width:45%;
+				margin-left:10%;
+				width:35%;
 				float:left;	
 			}
 			.link2 li a{
@@ -324,7 +301,7 @@
 				width:100%;
 				background:#fcfcfc;
 				position:absolute;
-				top:4%;
+				top:6%;
 			}
 			.interests{
 				float:left;
@@ -333,8 +310,8 @@
 			}
 			.interest-cart{
 				float:left;
-				width:20%;
-				border:solid 0.1em #DBDBDB;
+				width:23%;
+				border:solid 0.1em #eaeaea;
 				border-radius:3px 3px 0px 0px;
 			}
 			.interest-cart-header{
@@ -380,8 +357,6 @@
 				padding:1%;
 				width:100%;
 				border-radius:0px 0px 3px 3px;
-				max-height:400px;
-				overflow:auto;
 			}
 			.interest-cart-content p{
 				padding:2%;
@@ -394,8 +369,9 @@
 				padding:0px;
 			}
 			.interest-cart-content li{
-				padding:2%;
+				padding:0.5%;
 				border-bottom:#DBDBDB solid 0.1em;
+				margin-bottom:1%;
 			}
 			.interest-cart-content li:hover{
 				background:#DBDBDB;
@@ -428,9 +404,17 @@
 				opacity:0.9;
 				background:#fff;
 			}
+			.interest-cart-content li .item-posts-total{
+				color:#bcbcbc;
+				font-size:11px;
+				text-align:left;
+			}
 			.interest-content{
-				width:80%;
-				margin-left:22.5%;
+				width:77%;
+				margin-left:25.5%;
+				border:solid 0.1em #eaeaea;
+				border-radius:3px 3px 0px 0px;
+				padding:1%;
 			}
 			.interest-content h4{
 				margin-top:0px;
@@ -441,7 +425,7 @@
 			.interest-content .interest-content-data{
 				margin-top:10px;
 				padding:1%;
-				border-bottom:#ccc dotted 0.1em;
+				border-bottom:#eee dotted 0.1em;
 				overflow:auto;				
 			}
 			.interest-content .interest-content-data:hover{}
@@ -892,19 +876,14 @@ dsdssd dsadas sadsad dsad dsad dsad dsa dsadsa sadsa dsad sadsad.
 			<div class="logo">
 				<a href="home.php"><img src="img/logo.png"/></a>
 			</div>
-			<div class="search">
-				<form>
-					<input name="search-item" type="text" placeholder="Search Codevated"/>
-				</form>
-			</div>
 			<div class="other-links">
 				<div class="link1">
 					<ul>
-					<li><a href="concepts.php">Concepts</a></li>
-					<li><a href="discussions.php">Discussions</a></li>
-					<li><a href="circles.php">Circles</a></li>
-					<li><a href="mentor.php">Mentor</a></li>
-					<li><a href="mentee.php">Mentee</a></li>
+					<li><a href="concepts.php"><img src="img/concept.png"/> Concepts</a></li>
+					<li><a href="discussions.php"><img src="img/discussion.png"/> Discussions</a></li>
+					<li><a href="circles.php"><img src="img/circles.png"/> Circles</a></li>
+					<li><a href="mentor.php"><img src="img/mentor.png"/> Mentor</a></li>
+					<li><a href="mentee.php"><img src="img/mentee.png"/> Mentee</a></li>
 					</ul>
 				</div>
 				<div class="online-chat">
@@ -923,11 +902,10 @@ dsdssd dsadas sadsad dsad dsad dsad dsa dsadsa sadsa dsad sadsad.
 				</div>
 				<div class="link2">
 					<ul>					
-					<li><a href="" title="Notification"><img src="img/notify.png"/></a></li>
+					<li><a href="" title="Notification"><img src="img/notify2.png"/></a></li>
 					<li>
 						<a href="#" class="profile-pic-btn" title="Account">
 							<?php $func->displayGenderIcon($user);?>
-							<span>&#9660;</span>
 						</a>
 					</li>
 					</ul>					

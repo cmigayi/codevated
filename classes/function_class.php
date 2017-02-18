@@ -330,6 +330,9 @@
 								</a>								
 								<div class='clear'></div>
 							</div>
+						<div class='item-posts-total'>
+							10 posts
+						</div>
 						</li>
 					</ul>
 				";							

@@ -315,7 +315,7 @@
 	.open-group{
 		cursor:pointer;
 		width:100%;
-		border-bottom:#DBDBDB solid 0.1em;
+		border-bottom:#eaeaea solid 0.1em;
 		font-size:13px;
 		font-weight:600;
 	}
@@ -323,7 +323,7 @@
 		cursor:pointer;
 		width:100%;
 		text-align:right;
-		border-bottom:#DBDBDB solid 0.1em;
+		border-bottom:#eaeaea solid 0.1em;
 		font-size:13px;
 		font-weight:600;
 	}
@@ -356,7 +356,7 @@
 		cursor:pointer;
 		width:100%;
 		text-align:right;
-		border-bottom:#DBDBDB solid 0.1em;
+		border-bottom:#eaeaea solid 0.1em;
 		font-size:13px;
 		font-weight:600;
 	}
@@ -373,6 +373,9 @@
 		list-style:none;
 		margin:0px;
 		padding:0px;
+	}
+	.activities-content li:last-child{
+		border-bottom:none;
 	}
 	.activities-content li{
 		margin-top:5px;
@@ -460,7 +463,7 @@
 	.suggestions{
 		width:18%;
 		margin-left:81%;
-		border:solid 0.1em #DBDBDB;
+		border:solid 0.1em #eaeaea;
 		border-top:none;
 		margin-top:1%;
 		border-radius:3px 3px 0px 0px;
@@ -493,46 +496,77 @@
 	}			
 	.add-mentor-div{
 		width:100%;
-		margin-bottom:1%;
-		border-bottom:#ccc dotted 0.1em;
+		margin-bottom:5%;
 		padding:1%;
 		padding-bottom:3%;
 	}
-	.add-mentor-div-top{}
+	.add-mentor-div-left{
+		float:left;
+		width:30%;	
+	}	
 	.mentor-img{
 		float:left;
-		width:30%;
+		width:100%;
 	}
 	.mentor-img img{
-		width:90%;
-		margin-left:30%;
+		width:100%;
+		margin-left:0%;
 	}
-	.mentor-info{
-		width:60%;
-		margin-left:40%;
-		padding:1%;;
+	.add-mentor-div-right{
+		margin-left:32%;
+		width:68%;
 	}
-	.mentor-info span{
-		color:#76DB51;
+	.add-mentor-div-right-top{
+		width:100%;	
 	}
-	.mentor-info p{
-		font-size:13px;
-		color:#000;
+	.add-mentor-div-right-top h4{
+		width:80%;
+		float:left;
+		color:#242424;
+		font-size:12px;
+		font-weight:600;
+		margin-top:0px;
+		margin-bottom:0px;	
 	}
-	.add-mentor-div-bottom{}
+	.add-mentor-div-right-top .mentor-rating{
+		width:20%;
+		margin-left:80%;
+		border:#76DB51 solid 0.1em ;
+		background:#76DB51;
+		border-radius:1px;	
+	}
+	.mentor-rating img{
+		width:40%;
+		float:left;
+		margin-top:9%;
+	}
+	.mentor-rating .rating-text{
+		width:55%;
+		margin-left:45%;
+		font-size:12px;
+		color:#fff;
+		font-weight:600;
+	}
+	.add-mentor-div-right p{
+		margin-top:0px;
+		margin-bottom:0px;
+		font-size:12px;
+	}	
+	.add-mentor-div-right-bottom{}
 	.add-mentor-btn{
 		background:#eee;
 		border:#ccc solid 0.1em;
 		border-radius:2px;
-		padding:1%;
+		padding:1.5%;
 		text-align:center;
-		float:left;
 		width:50%;
+		margin-left:30%;
 		font-size:12px;
 	}
 	.add-mentor-btn a{
 		color:#000;
 		font-size:13px;
+		font-weight:600;
 	}
 	.add-mentor-btn a:hover{
 		text-decoration:none;
@@ -540,22 +574,7 @@
 	.add-mentor-btn a img{
 		width:15%;
 	}
-	.mentor-rating{
-		margin-left:85%;
-		width:15%;
-		border:solid 0.1em #828282;
-		border-radius:2px;
-	}
-	.mentor-rating img{
-		width:40%;
-		float:left;
-		margin-top:5%;
-	}
-	.mentor-rating .rating-text{
-		width:55%;
-		margin-left:45%;
-		font-size:12px;
-	}
+	
 </style>
 <script type="text/javascript">			
 	$(document).ready(function(){
@@ -854,91 +873,77 @@
 						//$func->getAllUserConcepts($user);
 					?>
 					<div class="add-mentor-div">
-						<div class="add-mentor-div-top">
+						<div class="add-mentor-div-left">
 							<div class="mentor-img">
 								<img src="img/female_user.png"/>
 							</div>
-							<div class="mentor-info">
-								<span>Felix Carlos</span>
-								<p>php, sql, laravel</p>
-							</div>
-							<div class="clear"></div>
 						</div>
-						<div class="add-mentor-div-bottom">
+						<div class="add-mentor-div-right">
+							<div class="add-mentor-div-right-top">
+								<h4>Felix Carlos</h4>
+								<div class="mentor-rating">
+								<img src="img/rating3.png"/> <div class="rating-text">10</div>
+								</div>
+							</div>
+							<p>php, sql, laravel</p>
+						</div>
+						<div class="add-mentor-div-right-bottom">
 							<div class="add-mentor-btn">
 								<a href=""><img src="img/add-mentor.png"/> add mentor</a>
 							</div>
-							<div class="mentor-rating">
-								<img src="img/rating.png"/> <div class="rating-text">10</div>
-							</div>
-							<div class="clear"></div>
 						</div>
+					<div class="clear"></div>
 					</div>
-					<div class="add-mentor-div">
-						<div class="add-mentor-div-top">
+			
+						<div class="add-mentor-div">
+						<div class="add-mentor-div-left">
 							<div class="mentor-img">
 								<img src="img/female_user.png"/>
 							</div>
-							<div class="mentor-info">
-								<span>Felix Carlos</span>
-								<p>php, sql, laravel</p>
-							</div>
-							<div class="clear"></div>
 						</div>
-						<div class="add-mentor-div-bottom">
+						<div class="add-mentor-div-right">
+							<div class="add-mentor-div-right-top">
+								<h4>Felix Carlos</h4>
+								<div class="mentor-rating">
+								<img src="img/rating3.png"/> <div class="rating-text">10</div>
+								</div>
+							</div>
+							<p>php, sql, laravel</p>
+						</div>
+						<div class="add-mentor-div-right-bottom">
 							<div class="add-mentor-btn">
 								<a href=""><img src="img/add-mentor.png"/> add mentor</a>
 							</div>
-							<div class="mentor-rating">
-								<img src="img/rating.png"/> <div class="rating-text">10</div>
-							</div>
-							<div class="clear"></div>
 						</div>
+					<div class="clear"></div>
 					</div>
-					<div class="add-mentor-div">
-						<div class="add-mentor-div-top">
-							<div class="mentor-img">
-								<img src="img/male_user.png"/>
-							</div>
-							<div class="mentor-info">
-								<span>Felix Carlos</span>
-								<p>php, sql, laravel</p>
-							</div>
-							<div class="clear"></div>
-						</div>
-						<div class="add-mentor-div-bottom">
-							<div class="add-mentor-btn">
-								<a href=""><img src="img/add-mentor.png"/> add mentor</a>
-							</div>
-							<div class="mentor-rating">
-								<img src="img/rating.png"/> <div class="rating-text">10</div>
-							</div>
-							<div class="clear"></div>
-						</div>
-					</div>
-					<div class="add-mentor-div">
-						<div class="add-mentor-div-top">
+
+			<div class="add-mentor-div">
+						<div class="add-mentor-div-left">
 							<div class="mentor-img">
 								<img src="img/female_user.png"/>
 							</div>
-							<div class="mentor-info">
-								<span>Felix Carlos</span>
-								<p>human psychology, child health, neural physician</p>
-							</div>
-							<div class="clear"></div>
 						</div>
-						<div class="add-mentor-div-bottom">
+						<div class="add-mentor-div-right">
+							<div class="add-mentor-div-right-top">
+								<h4>Mino polytolosischaetos</h4>
+								<div class="mentor-rating">
+								<img src="img/rating3.png"/> <div class="rating-text">10</div>
+								</div>
+							</div>
+							<p>human psychology, paedetratican</p>
+						</div>
+						<div class="add-mentor-div-right-bottom">
 							<div class="add-mentor-btn">
 								<a href=""><img src="img/add-mentor.png"/> add mentor</a>
 							</div>
-							<div class="mentor-rating">
-								<img src="img/rating.png"/> <div class="rating-text">10</div>
-							</div>
-							<div class="clear"></div>
 						</div>
-					</div>					
-				</div>			
+					<div class="clear"></div>
+					</div>
+
+				
 			</div>
+</div>
 <?php
 	require_once("template/user_footer.inc");			
 ?>

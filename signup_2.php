@@ -40,10 +40,10 @@
 			}
 		 });
 		
-		$('.login').fadeIn(1000).css("display","block");
-		$('.login h4:nth-child(2)').fadeIn(5000).css("display","block");
+		$('.login').css("display","block");
+		$('.login h4:nth-child(2)').fadeIn(2000).css("display","block");
 
-		$('.profession').fadeIn(7000).css("display","block");
+		$('.profession').fadeIn(2000).css("display","block");
 		;		
 	});
 	

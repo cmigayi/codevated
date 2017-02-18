@@ -35,13 +35,13 @@
 			}
 		 });
 
-		$('.login').fadeIn(1000).css("display","block");
-		$('.login h4:nth-child(2)').fadeIn(5000).css("display","block");
+		$('.login').css("display","block");
+		$('.login h4:nth-child(2)').css("display","block");
 
-		$('.profession').fadeIn(7000).css("display","block");
-		$('.profession h4:nth-child(2)').fadeIn(10000).css("display","block");
+		$('.profession').css("display","block");
+		$('.profession h4:nth-child(2)').fadeIn(2000).css("display","block");
 
-		$('.interest').fadeIn(15000).css("display","block");	
+		$('.interest').fadeIn(2000).css("display","block");	
 	});
 </script>
 <style>
