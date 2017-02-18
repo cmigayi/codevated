@@ -62,6 +62,22 @@
 		xmlhttp.send();
 	    }
 	}
+
+	function showSkills(str) {
+	    if (str.length == 0) {
+		document.getElementById("txtHint2").innerHTML = "";
+		return;
+	    } else {
+		var xmlhttp = new XMLHttpRequest();
+		xmlhttp.onreadystatechange = function() {
+		    if (this.readyState == 4 && this.status == 200) {
+		        document.getElementById("txtHint2").innerHTML = this.responseText;
+		    }
+		};
+		xmlhttp.open("GET", "getskills.php?q=" + str, true);
+		xmlhttp.send();
+	    }
+	}
 </script>
 <style>
 	.login-page{
@@ -201,19 +217,13 @@
 	.profession .student-question{
 		display:none;	
 	}
-	.profession form input[type="text"]{
+	.profession form select{
 		width:100%;
 		padding:1.5%;
 		border:solid 0.1em #CFD1D1;
 		border-radius:2px;
 		font-size:15px;
-	}
-	.profession form input[type="password"]{
-		width:100%;
-		padding:1.5%;
-		border:solid 0.1em #CFD1D1;
-		border-radius:2px;
-		font-size:15px;
+		outline:none;
 	}
 	.profession form input[type="submit"]{
 		width:100%;
@@ -242,6 +252,28 @@
 	.profession form li{
 		width:20%;
 		float:left;
+		margin-left:5%;
+	}
+	
+	#txtHint,#txtHint2{
+		padding:1%;
+		border:#ddd solid 0.1em;
+		border-radius:3px;
+		max-height:200px;
+		overflow:auto;
+	}
+	.speciality-items .item{
+		width:90%;
+		margin-left:5%;
+		background:#ddd;
+		padding:2%;
+	}
+	.speciality-items .item span{
+		width:80%;
+		float:left;
+	}
+	.speciality-items .item input[type="checkbox"]{
+		width:10%;
 		margin-left:5%;
 	}
 </style>
@@ -314,7 +346,12 @@
 					</select>			
 				</div>			
 			</div>
-			<div id="txtHint"></div>
+			<div id="txtHint">
+				General			
+			</div>
+			<div id="txtHint2">
+				Specific
+			</div>
 			
 			<div><input name="submit" type="submit" value="Proceed"/></div>			
 		</form>

@@ -115,7 +115,7 @@
 			}
 			.link1{
 				float:left;
-				width:50%;
+				width:48%;
 				padding:0.5%;	
 			}
 			.link1 li{
@@ -144,7 +144,7 @@
 			.online-chat{
 				float:left;
 				width:10%;
-				margin-left:27%;
+				margin-left:29%;
 				text-align:center;
 				padding:0.5%;
 			}

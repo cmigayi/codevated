@@ -22,7 +22,8 @@
 	echo "<div class='question'>
 		Select your specialization:
 		<div class='ans'>
-			<select name='speciality'>";						
+			<select name='speciality' onChange='showSkills(this.value)'>";	
+			echo "<option>None</option>";					
 			while($row=mysql_fetch_array($query)){
 				echo "<option value='".$row['speciality_id']."'>".$row['speciality_name']."</option>";
 			}

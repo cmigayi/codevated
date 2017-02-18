@@ -496,7 +496,7 @@
 	}			
 	.add-mentor-div{
 		width:100%;
-		margin-bottom:5%;
+		margin-bottom:7%;
 		padding:1%;
 		padding-bottom:3%;
 	}
@@ -507,7 +507,7 @@
 	.mentor-img{
 		float:left;
 		width:90%;
-		border:#ddd solid 0.1em;
+		border:#eaeaea solid 0.1em;
 		border-radius:9px;
 		overflow:hidden;		
 	}

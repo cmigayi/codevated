@@ -367,7 +367,7 @@
 					<div class='item-name'>".
 						$row['cartegory_name']					
 					."</div>
-					<input name='' type='checkbox'/>				
+					<input name='cartegory[]' type='checkbox' value='".$row['interest_cartegory_id']."'/>				
 				</div>
 			";
 			}
