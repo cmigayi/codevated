@@ -15,12 +15,18 @@
 		
 		$professionType = $_POST['profession'];
 		$speciality = $_POST['speciality'];
+		$specific = $_POST['specific'];
 	
 		if(empty($error)){
 			$state = $func->postProfessionOnSignUp($user,$professionType,$speciality);
 			
 			if($state == true){
-				header("Location: signup_3.php");
+				foreach($specific as $d){
+					$state = $func->postUserSpeciality($user,$d);
+					if($state == true){				
+						header("Location: signup_3.php");
+					}
+				}
 			}else{
 				$error="Falied to post";
 			}

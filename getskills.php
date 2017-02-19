@@ -22,7 +22,7 @@
 		echo "
 			<div class='speciality-items'>
 				<div class='item'>
-					<span>".$row['cartegory_name']."</span> <input name='' type='checkbox'/>
+					<span>".$row['cartegory_name']."</span> <input name='specific[]' value='".$row['interest_cartegory_id']."' type='checkbox'/>
 				</div>				
 			</div>	
 

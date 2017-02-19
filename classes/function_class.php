@@ -193,8 +193,19 @@
 			}
 		}
 
-		function postProfessionOnSignUp($userID,$professionType,$speciality){
-			$sql="INSERT INTO profession(user_id,profession_type,speciality_id,dateTime) VALUES('$userID','$professionType','$speciality',NOW())";
+		function postProfessionOnSignUp($userID,$professionType,$specialityID){
+			$sql="INSERT INTO profession(user_id,profession_type,speciality_id,dateTime) VALUES('$userID','$professionType','$specialityID',NOW())";
+			$query = mysql_query($sql) or die(mysql_error());
+
+			if($query){
+				return true;			
+			}else{
+				return false;
+			}
+		}
+		function postUserSpeciality($userID,$interestcartegoryID){
+			$sql="INSERT INTO user_speciality
+(user_id,interest_cartegory_id,dateTime) VALUES('$userID','$interestcartegoryID',NOW())";
 			$query = mysql_query($sql) or die(mysql_error());
 
 			if($query){
