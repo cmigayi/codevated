@@ -466,14 +466,14 @@
 		border:solid 0.1em #eaeaea;
 		border-top:none;
 		margin-top:1%;
-		border-radius:3px 3px 0px 0px;
+		border-radius:5px 5px 0px 0px;
 	}
 	.suggestions-header{
 		border-bottom:#76DB51 solid 0.1em ;
 		background:#76DB51;
 		width:100%;
 		padding:3%;
-		border-radius:3px 3px 0px 0px;
+		border-radius:5px 5px 0px 0px;
 	}
 	.suggestions-header h4{
 		width:100%;
@@ -507,7 +507,6 @@
 	.mentor-img{
 		float:left;
 		width:90%;
-		border:#eaeaea solid 0.1em;
 		border-radius:9px;
 		overflow:hidden;		
 	}
@@ -844,7 +843,7 @@
 							</div>
 							
 							<?php
-								$func->getLatestPosts(5);
+								$func->getLatestPosts(10);
 							?>
 						</div>						
 					</div>

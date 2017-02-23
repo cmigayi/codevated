@@ -14,10 +14,7 @@
 ?>
 <script>
 $(document).ready(function() {
-    $("li").click(function() {
-        $("li").removeClass('current');
-        $(this).addClass('current');
-    });
+   
 });
 </script>
 <style>
@@ -30,36 +27,51 @@ h3{
 h3 img{
 	width:25%;
 }
-.current{
-	border:#F5F5F5 solid 0.1em;
-	background:#F5F5F5;
-}
-.current a{
-	text-decoration:none;
-	color:#000;
-	font-weight:600;
-}
 .concepts{
 	width:80%;
-	margin-left:15%;;
+	margin-left:15%;
 	padding:1%;
 }
-.concepts form{
-	width:40%;
-	margin-left:60%;
+.concepts-header{
+	margin-bottom:1%;
+}
+.concepts-header .find-by-title{
+	float:left;
+	width:60%;
+}
+.concepts-header .find-by-title h4{
+	float:left;
+	width:24%;
+}
+.concepts-header .find-by-title form{
+	margin-left:25%;
+	width:65%;
+}
+.concepts-header .find-by-title form input[type="text"]{
+	width:100%;
+	border:#ccc solid 0.1em;
+	border-radius:4px;
 	padding:1%;
 }
-.concepts form select{
+.concepts-header .find-by-interest{
+	margin-left:63%;
+}
+.concepts-header .find-by-interest form{
 	width:100%;
 	padding:1%;
-	border:#F5F5F5 solid 0.1em;
-	background:#F5F5F5;
-	cursor:pointer;
-	color:#6EA1D4;
 }
-.concepts form select:hover{
-	background:#E0E0E0;
-	border:#E0E0E0 solid 0.1em;
+.concepts-header .find-by-interest form select{
+	width:100%;
+	padding:1%;
+	background:#76DB51;
+	color:#fff;
+	border:#76DB51 solid 0.1em;
+}
+.concepts-header .find-by-interest select:hover{
+	background:#e3fce0;
+	color:#000;
+	border:#e3fce0 solid 0.1em;
+	cursor:pointer;
 }
 .concept-item{
 	float:left;
@@ -67,7 +79,7 @@ h3 img{
 	width:31%;
 	height:200px;
 	overflow:auto;
-	background:#F2F2F2;
+	background:#fff;
 	border:#F2F2F2 solid 0.1em;
 }
 .concept-item:hover{
@@ -111,31 +123,30 @@ h3 img{
 	color:#296BD6;
 	font-weight:600;
 }
-.class-notify{
-	padding:1%;
-	font-size:14px;
-	font-weight:600;
-}
 </style>
 <h3><img src="img/concept.png"/> Concepts</h3>
 <div class="concepts">
-	<form>
-		Specify Cartegory:
-		<select name="interest">
-			<option>All</option>
-		</select>
-	</form>
+	<div class="concepts-header">
+		<div class="find-by-title">
+			<h4>Find a concept</h4>
+			<form>				
+				<input name="" type="text" placeholder="Find by discussion  title"/>
+			</form>
+		</div>
+		<div class="find-by-interest">
+			<form>
+				<select name="interest">
+					<option>All Discussions</option>
+				</select>
+			</form>	
+		</div>
+	</div>
 	<?php
 		$func->getAllConcepts();
 	?>
   <div class="clear"></div>
-</div>
-	
-<script>
- $(function() {
-    $( ".classes-tabs" ).tabs();
-  });
-</script>
+</div>	
+
 <?php
 	require_once("template/user_footer.inc");			
 ?>

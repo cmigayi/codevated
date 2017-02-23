@@ -82,21 +82,20 @@
 			
 		<style>
 			body{
-				background:#F5F5F5;
+				background:#e2e2e2;
 			}
 			header,.content,footer{display:block;}
 			header{
 				width:100%;
 				margin-top:0px;
-				padding:0.5%;
 				border-bottom:solid 0.1em #D6D6D6;
 				border-width:1px;
-				background:#F2F2F2;
+				background:#fcfcfc;
 				position:fixed;
 				z-index:1000;
 			}
 			.logo{				
-				width:4%;				
+				width:3%;				
 				margin-left:0%;
 				float:left;
 			}
@@ -106,7 +105,7 @@
 			.other-links{
 				float:left;
 				width:100%;
-				margin-top:0.3%;;
+				padding:0.5%;
 			}
 			.other-links ul{
 				list-style:none;
@@ -116,7 +115,7 @@
 			.link1{
 				float:left;
 				width:48%;
-				padding:0.5%;	
+				margin-top:0.3%;	
 			}
 			.link1 li{
 				margin-left:3%;
@@ -126,7 +125,7 @@
 			}
 			.link1 li a{	
 				color:#3B3B3B;
-				font-weight:600;
+				font-weight:500;
 				font-size:13px;
 			}
 			.link1 li a img{
@@ -134,19 +133,23 @@
 				margin-bottom:2px;
 			}
 			.link1 li a:hover{
-				color:#4772b7;
-				text-decoration:none;
+				text-decoration:none;				
+			}
+			.link1 li:hover{
+				border-bottom:#76DB51 0.1em solid;
+				border-width:5px;
+				padding-bottom:10px;				
 			}
 			.link1 li .current{
-				opacity:0.3;
-				text-decoration:none;
+				border-bottom:#76DB51 0.1em solid;
+				border-width:5px;
+				padding-bottom:14px;
 			}
 			.online-chat{
 				float:left;
 				width:10%;
 				margin-left:29%;
 				text-align:center;
-				padding:0.5%;
 			}
 			.online-chat img{
 				width:20%;
@@ -155,7 +158,7 @@
 			.online-chat .online a {
 				color:#27ae60;
 				font-size:13px;
-				font-weight:600;
+				font-weight:500;
 			}
 			.online-chat .online a:hover{
 				text-decoration:none;
@@ -300,9 +303,9 @@
 				padding-top:2%;
 				padding-bottom:5%;
 				width:100%;
-				background:#fcfcfc;
+				background:#f7f7f7;
 				position:absolute;
-				top:6%;
+				top:3%;
 			}
 			.interests{
 				float:left;
@@ -313,13 +316,15 @@
 				float:left;
 				width:23%;
 				border:solid 0.1em #eaeaea;
-				border-radius:3px 3px 0px 0px;
+				border-radius:5px 5px 0px 0px;
 			}
 			.interest-cart-header{
 				border-bottom:solid 0.1em #D6D6D6;
-				background:#F2F2F2;
+				border:solid 0.1em #f7f7f7;
+				background:#eaeaea;
 				width:100%;
 				padding:2%;
+				border-radius:5px 5px 0px 0px;
 			}
 			.interest-cart-header h4{
 				float:left;
@@ -414,8 +419,9 @@
 				width:77%;
 				margin-left:25.5%;
 				border:solid 0.1em #eaeaea;
-				border-radius:3px 3px 0px 0px;
+				border-radius:5px 5px 0px 0px;
 				padding:1%;
+				background:#fcfcfc;
 			}
 			.interest-content h4{
 				margin-top:0px;
@@ -435,9 +441,17 @@
 				color:#3c3c3d;
 				font-size:14px;
 			}
+			.interest-content-data-user-img{
+				width:9%;
+				float:left;
+			}
+			.interest-content-data-user-img img{
+				width:100%;			
+			}
 			.interest-content-data-div{
 				float:left;
-				width:85%;
+				width:80%;
+				margin-left:1%;;
 			}
 			.interest-content-data p {
 				margin-top:0px;
@@ -450,9 +464,9 @@
 				color:#000;
 			}
 			.interest-content-data .more-info{
-				width:10%;
+				width:9%;
 				padding:1%;
-				margin-left:90%;
+				margin-left:91%;
 				background:#CFCFCF;
 				text-align:center;
 			}
@@ -877,7 +891,7 @@ dsdssd dsadas sadsad dsad dsad dsad dsa dsadsa sadsa dsad sadsad.
 			<div class="other-links">
 				<div class="link1">
 					<ul>
-					<li><a href="home.php"><img src="img/home.png"/>  Home</a></li>
+					<li class="current"><a href="home.php"><img src="img/home.png"/>  Home</a></li>
 					<li><a href="concepts.php"><img src="img/concept.png"/> Concepts</a></li>
 					<li><a href="discussions.php"><img src="img/discussion.png"/> Discussions</a></li>
 					<li><a href="circles.php"><img src="img/circles.png"/> Circles</a></li>

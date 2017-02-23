@@ -242,6 +242,8 @@
 				$userData = $this->getUserSignUpInfo($row['user_id']);
 				echo "
 					<div class='interest-content-data'>
+						<div class='interest-content-data-user-img'>						<img src='img/female_user.png'/>
+						</div>
 						<div class='interest-content-data-div'>
 							<p><span class='tut-type'>".$interest['cartegory_name'].":</span>
 							<a href='concept_item.php?c=".$row['concept_id']."'>".$row['name']."</a>
@@ -262,6 +264,21 @@
 			}
 		}	
 		
+		function getMentorSuggestionsForUser($userID){
+			$sql = "SELECT * FROM user_interest WHERE user_id = '$userID'";
+			$query = mysql_query($sql) or die(mysql_error());
+			
+			if(mysql_num_rows($query) > 0){
+
+				while($row=mysql_fetch_array($query)){
+					
+				}
+
+			}else{
+				echo "No mentor suggestions yet!";			
+			}
+		}		
+
 		function checkGender($userID){
 			$sql = "SELECT * FROM users WHERE user_id='$userID'";
 			$query = mysql_query($sql) or die(mysql_error());

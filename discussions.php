@@ -50,7 +50,7 @@ $(document).ready(function() {
 	padding:1%;
 }
 .discussions-header{
-	margin-bottom:2%;
+	margin-bottom:1%;
 }
 .discussions-header .find-by-title{
 	float:left;

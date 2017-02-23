@@ -26,16 +26,16 @@ $(document).ready(function() {
 <style>
 .bio{
 	float:left;
-	width:23%;
+	width:25%;
 	padding:1%;
-	margin-left:5%;
+	margin-left:2.5%;
 	margin-top:2%;
 }
 .bio .prof-img{
-	width:60%;
-	margin-left:25%;
+	width:80%;
+	margin-left:10%;
 	border:#edeeef solid 0.1em;
-	border-radius:10px;
+	border-radius:120px;
 	background:#edeeef;
 	padding:1%;
 	overflow:hidden;
@@ -67,8 +67,8 @@ $(document).ready(function() {
 	font-weight:600;
 }
 .preference{
-	width:65%;
-	margin-left:30%;
+	width:70.5%;
+	margin-left:27%;
 	margin-top:2%;
 }
 .bio-data-btn{
@@ -131,7 +131,7 @@ $(document).ready(function() {
 }
 .preference #tabs-1 li{
 	display:block;
-	width:90%;
+	width:100%;
 	margin-top:1%;
 	margin-left:0%;
 	padding:1%;
@@ -238,12 +238,14 @@ $(document).ready(function() {
 </style>
 <div class="bio">
 	<div class="prof-img"><?php $func->displayGenderIcon($user);?></div>
-	<h4><?php 
-	if($userData['name'] != "none"){
-		echo $userData['name'];
-	}
-	echo " <span>".$userData['username']."</span>";
-	?></h4>
+	<h4>
+	<?php 
+		if($userData['name'] != "none"){
+			echo $userData['name'];
+		}
+		echo " <span>".$userData['username']."</span>";
+		?>
+	</h4>
 	<div class="bio-data">		
 		<div class="bio-data-item"><span>Email: </span><?php echo $userData['email'];?></div>
 		<div class="bio-data-item"><span>Joined on </span><?php echo date("d-M-Y", strtotime($userData['dateTime']));?></div>
