@@ -231,6 +231,13 @@
 			$query = mysql_query($sql) or die(mysql_error());
 			
 			return mysql_fetch_array($query);
+		}
+
+		function getInterestSpecialist($interestID){
+			$sql = "SELECT * FROM user_speciality WHERE interest_cartegory_id='$interestID'";
+			$query = mysql_query($sql) or die(mysql_error());
+			
+			return mysql_fetch_array($query);
 		}		
 		
 		function getLatestPosts($limit){
@@ -271,7 +278,32 @@
 			if(mysql_num_rows($query) > 0){
 
 				while($row=mysql_fetch_array($query)){
-					
+					$specialityData = $this->getInterestSpecialist($row['interest_cartegory_id']);
+					$userData = $this->getUserSignUpInfo($specialityData['user_id']);
+					echo "
+						<div class='add-mentor-div'>
+						<div class='add-mentor-div-left'>
+							<div class='mentor-img'>
+								<img src='img/female_user.png'/>
+							</div>
+						</div>
+						<div class='add-mentor-div-right'>
+							<div class='add-mentor-div-right-top'>
+								<h4>".$userData['username']."</h4>
+								<div class='mentor-rating'>
+								<img src='img/rating3.png'/> <div class='rating-text'>10</div>
+								</div>
+							</div>
+							<p>php, sql, laravel</p>
+						</div>
+						<div class='add-mentor-div-right-bottom'>
+							<div class='add-mentor-btn'>
+								<a href=''><img src='img/add-mentor.png'/> add mentor</a>
+							</div>
+						</div>
+					<div class='clear'></div>
+					</div>					
+					";
 				}
 
 			}else{

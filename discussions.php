@@ -21,32 +21,9 @@ $(document).ready(function() {
 });
 </script>
 <style>
-.discussion-left{
-	float:left;
-	width:15%;
-	padding:1%;
-	margin-top:0px;
-}
-.discussion-left h3{}
-.discussion-left h3 img{
-	width:25%;
-}
-.discussion-left-content{
-	width:100%;
-}
-.discussion-left-content .start-a-discussion-btn{
-	text-align:center;
-	padding:2%;
-	border:#ccc solid 0.1em;
-	background:#e3e4e5;
-	border-radius:4px;
-}
-.discussion-left-content .start-a-discussion-btn a{
-	color:#000;
-}
 .discussions{
 	width:80%;
-	margin-left:15%;
+	margin-left:10%;
 	padding:1%;
 }
 .discussions-header{
@@ -89,6 +66,16 @@ $(document).ready(function() {
 	color:#000;
 	border:#e3fce0 solid 0.1em;
 	cursor:pointer;
+}
+.discussions-header .start-a-discussion-btn{
+	text-align:center;
+	padding:2%;
+	border:#ccc solid 0.1em;
+	background:#e3e4e5;
+	border-radius:4px;
+}
+.discussions-header .start-a-discussion-btn a{
+	color:#000;
 }
 .discussion-item{}
 .discussion-item table{
@@ -180,14 +167,6 @@ $(document).ready(function() {
 }
 
 </style>
-<div class="discussion-left">
-	<h3><img src="img/discussion.png"/> Discussions</h3>
-	<div class="discussion-left-content">
-		<div class="start-a-discussion-btn">
-			<a href="discussion_create.php">Start a discussion</a>
-		</div>
-	</div>
-</div>
 <div class="discussions">
 	<div class="discussions-header">
 		<div class="find-by-title">
@@ -204,7 +183,9 @@ $(document).ready(function() {
 			</form>	
 		</div>
 	</div>
-	
+	<div class="start-a-discussion-btn">
+		<a href="discussion_create.php">Start a discussion</a>
+	</div>
 	<div class="discussion-item">
 		<table>
 			<tr><th>Topic</th><th>Cartegory</th><th>Participants</th><th>Views</th><th>Last Post</th></tr>

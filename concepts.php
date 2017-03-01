@@ -18,22 +18,15 @@ $(document).ready(function() {
 });
 </script>
 <style>
-h3{
-	float:left;
-	width:15%;
-	padding:1%;
-	margin-top:0px;
-}
-h3 img{
-	width:25%;
-}
 .concepts{
 	width:80%;
-	margin-left:15%;
+	margin-left:10%;
 	padding:1%;
 }
 .concepts-header{
 	margin-bottom:1%;
+	width:98%;
+	margin-left:1%;
 }
 .concepts-header .find-by-title{
 	float:left;
@@ -124,7 +117,6 @@ h3 img{
 	font-weight:600;
 }
 </style>
-<h3><img src="img/concept.png"/> Concepts</h3>
 <div class="concepts">
 	<div class="concepts-header">
 		<div class="find-by-title">

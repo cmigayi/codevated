@@ -93,6 +93,11 @@
 				background:#fcfcfc;
 				position:fixed;
 				z-index:1000;
+			}			
+			.menu-current{
+				border-bottom:#76DB51 0.1em solid;
+				border-width:5px;
+				padding-bottom:10px;
 			}
 			.logo{				
 				width:3%;				
@@ -139,11 +144,6 @@
 				border-bottom:#76DB51 0.1em solid;
 				border-width:5px;
 				padding-bottom:10px;				
-			}
-			.link1 li .current{
-				border-bottom:#76DB51 0.1em solid;
-				border-width:5px;
-				padding-bottom:14px;
 			}
 			.online-chat{
 				float:left;
@@ -303,7 +303,7 @@
 				padding-top:2%;
 				padding-bottom:5%;
 				width:100%;
-				background:#f7f7f7;
+				background:#f2f9f3;
 				position:absolute;
 				top:3%;
 			}
@@ -432,7 +432,7 @@
 			.interest-content .interest-content-data{
 				margin-top:10px;
 				padding:1%;
-				border-bottom:#eee dotted 0.1em;
+				border-bottom:#eee solid 0.1em;
 				overflow:auto;				
 			}
 			.interest-content .interest-content-data:hover{}
@@ -891,7 +891,7 @@ dsdssd dsadas sadsad dsad dsad dsad dsa dsadsa sadsa dsad sadsad.
 			<div class="other-links">
 				<div class="link1">
 					<ul>
-					<li class="current"><a href="home.php"><img src="img/home.png"/>  Home</a></li>
+					<li class="menu-current"><a href="home.php"><img src="img/home.png"/>  Home</a></li>
 					<li><a href="concepts.php"><img src="img/concept.png"/> Concepts</a></li>
 					<li><a href="discussions.php"><img src="img/discussion.png"/> Discussions</a></li>
 					<li><a href="circles.php"><img src="img/circles.png"/> Circles</a></li>

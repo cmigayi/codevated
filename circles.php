@@ -21,25 +21,18 @@ $(document).ready(function() {
 });
 </script>
 <style>
-h3{
-	float:left;
-	width:15%;
-	padding:1%;
-	margin-top:0px;
-}
-h3 img{
-	width:25%;
-}
 .circles-tabs{
 	width:80%;
-	margin-left:15%;
+	margin-left:10%;
 	margin-top:1%;
 }
 .circles-tabs ul{
 	list-style:none;
 	margin:0px;
+	padding:0px;
 	padding-bottom:10px;
-	border-bottom:#bababa solid 0.1em;
+	border-bottom:#ddd solid 0.1em;
+	border-width:3px;
 }
 .circles-tabs li:first-child{
 	margin-left:0%;
@@ -57,8 +50,8 @@ h3 img{
 }
 .circles-tabs li span{
 	background:#e3e5e3;
-	padding:0.5%;
-	border-radius:10px;	
+	padding:0.2%;
+	border-radius:5px;	
 }
 .circles-tabs li a{
 	color:#000;
@@ -77,7 +70,8 @@ h3 img{
 }
 .circle-tab-header{
 	margin-bottom:2%;
-	padding:0.5%;
+	padding:1%;
+	border:#eee solid 0.1em;
 }
 .circle-tab-header .find-by-name{
 	float:left;
@@ -118,11 +112,11 @@ h3 img{
 	border:#e3fce0 solid 0.1em;
 	cursor:pointer;
 }
-.current{	
+.circles-tabs .current{	
 	border-bottom:#60605f solid 0.1em;
 	border-width:4px;
 }
-.current a{
+.circles-tabs .current a{
 	text-decoration:none;
 	color:#000;
 	font-weight:500;
@@ -138,16 +132,7 @@ h3 img{
 	color:#000;
 	width:100%;
 }
-.tabs-content-header{
-	background:#ededed;
-	border:#ccc solid 0.1em;
-	border-radius:2px 2px 0px 0px;
-	padding:1%;
-	color:#000;
-	width:100%;
-}
 </style>
-<h3><img src="img/circles.png"/> Circles</h3>
 <div class="circles-tabs">
   <ul>
   <li class="current"><a href="#tabs-1">Open <span><?php echo $func->getTotalCircles("Open");?></span></a></li>

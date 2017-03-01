@@ -3,6 +3,8 @@
 	session_start();
 	$func = new FunctionClass();
 	
+	$page = "home";
+
 	if(isset($_SESSION['user_id'])){
 		$user = $_SESSION['user_id'];
 	}else{
@@ -315,7 +317,8 @@
 	.open-group{
 		cursor:pointer;
 		width:100%;
-		border-bottom:#eaeaea solid 0.1em;
+		border-bottom:#ddd solid 0.1em;
+		border-width:2px;
 		font-size:13px;
 		font-weight:600;
 	}
@@ -323,7 +326,8 @@
 		cursor:pointer;
 		width:100%;
 		text-align:right;
-		border-bottom:#eaeaea solid 0.1em;
+		border-bottom:#ddd solid 0.1em;
+		border-width:3px;
 		font-size:13px;
 		font-weight:600;
 	}
@@ -356,7 +360,8 @@
 		cursor:pointer;
 		width:100%;
 		text-align:right;
-		border-bottom:#eaeaea solid 0.1em;
+		border-bottom:#ddd solid 0.1em;
+		border-width:3px;
 		font-size:13px;
 		font-weight:600;
 	}
@@ -872,80 +877,11 @@
 				</div>
 				<div class="suggestions-content">
 					<?php
-						//$func->getAllUserConcepts($user);
+						$func->getMentorSuggestionsForUser($user);
 					?>
-					<div class="add-mentor-div">
-						<div class="add-mentor-div-left">
-							<div class="mentor-img">
-								<img src="img/female_user.png"/>
-							</div>
-						</div>
-						<div class="add-mentor-div-right">
-							<div class="add-mentor-div-right-top">
-								<h4>Felix Carlos</h4>
-								<div class="mentor-rating">
-								<img src="img/rating3.png"/> <div class="rating-text">10</div>
-								</div>
-							</div>
-							<p>php, sql, laravel</p>
-						</div>
-						<div class="add-mentor-div-right-bottom">
-							<div class="add-mentor-btn">
-								<a href=""><img src="img/add-mentor.png"/> add mentor</a>
-							</div>
-						</div>
-					<div class="clear"></div>
-					</div>
-			
-						<div class="add-mentor-div">
-						<div class="add-mentor-div-left">
-							<div class="mentor-img">
-								<img src="img/cilo.jpg"/>
-							</div>
-						</div>
-						<div class="add-mentor-div-right">
-							<div class="add-mentor-div-right-top">
-								<h4>Felix Carlos</h4>
-								<div class="mentor-rating">
-								<img src="img/rating3.png"/> <div class="rating-text">10</div>
-								</div>
-							</div>
-							<p>php, sql, laravel</p>
-						</div>
-						<div class="add-mentor-div-right-bottom">
-							<div class="add-mentor-btn">
-								<a href=""><img src="img/add-mentor.png"/> add mentor</a>
-							</div>
-						</div>
-					<div class="clear"></div>
-					</div>
-
-			<div class="add-mentor-div">
-						<div class="add-mentor-div-left">
-							<div class="mentor-img">
-								<img src="img/female_user.png"/>
-							</div>
-						</div>
-						<div class="add-mentor-div-right">
-							<div class="add-mentor-div-right-top">
-								<h4>Mino polytolosischaetos</h4>
-								<div class="mentor-rating">
-								<img src="img/rating3.png"/> <div class="rating-text">10</div>
-								</div>
-							</div>
-							<p>human psychology, paedetratican</p>
-						</div>
-						<div class="add-mentor-div-right-bottom">
-							<div class="add-mentor-btn">
-								<a href=""><img src="img/add-mentor.png"/> add mentor</a>
-							</div>
-						</div>
-					<div class="clear"></div>
-					</div>
-
-				
+							
+				</div>
 			</div>
-</div>
 <?php
 	require_once("template/user_footer.inc");			
 ?>
