@@ -870,7 +870,7 @@
 			</div>
 			<div class="suggestions">
 				<div class="suggestions-header">
-					<h4>Suggestions</h4>
+					<h4>Suggested mentors:</h4>
 				</div>
 				<div class="suggestions-content">
 					<?php

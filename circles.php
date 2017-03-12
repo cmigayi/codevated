@@ -24,11 +24,13 @@ $(document).ready(function() {
 .circles-tabs{
 	width:80%;
 	margin-left:10%;
-	margin-top:1%;
+	margin-top:1%;    
 }
 .circles-tabs ul{
 	list-style:none;
-	margin:0px;
+	width:98%;
+	margin-left:1%;
+    margin-bottom:0px;
 	padding:0px;
 	padding-bottom:10px;
 	border-bottom:#ddd solid 0.1em;
@@ -56,6 +58,7 @@ $(document).ready(function() {
 .circles-tabs li a{
 	color:#000;
 	outline:none;
+    font-size:14px;
 }
 .circles-tabs li a:hover{
 	text-decoration:none;
@@ -69,10 +72,12 @@ $(document).ready(function() {
 	color:#000;
 }
 .circle-tab-header{
-	margin-bottom:2%;
+	margin-bottom:1%;
 	padding:1%;
-	border:#eee solid 0.1em;
+	border:#ddd solid 0.1em;
     background: #fff;
+	width:98%;
+	margin-left:1%;
 }
 .circle-tab-header .find-by-name{
 	float:left;
@@ -80,19 +85,20 @@ $(document).ready(function() {
 }
 .circle-tab-header .find-by-name h4{
 	float:left;
-	width:35%;
+	width:30%;
 	margin-top:5px;
 	font-size:15px;
 }
 .circle-tab-header .find-by-name form{
-	margin-left:36%;
+	margin-left:31%;
 	width:55%;
 }
 .circle-tab-header .find-by-name form input[type="text"]{
 	width:100%;
 	border:#ddd solid 0.1em;
-	padding:1%;
-	border-radius:3px;
+	padding:1.5%;
+	border-radius:1px;
+    font-size:13px;
 }
 .circle-tab-header .find-by-interest{
 	margin-left:70%;
@@ -123,7 +129,7 @@ $(document).ready(function() {
 	font-weight:500;
 }
 #tabs-1,#tabs-2,#tabs-3{
-	
+	width:100%;
 }
 .tabs-content-header{
 	background:#ededed;
@@ -135,10 +141,10 @@ $(document).ready(function() {
 }
 .circles-item{
 	float:left;
-	margin-left:0.5%;
-    margin-top:0.5%;
+	margin-left:1%;
+    margin-top:1%;
     padding:1%;
-	width:31%;
+	width:32%;
 	height:200px;
 	background:#fff;
 	border:#F2F2F2 solid 0.1em;
@@ -171,7 +177,7 @@ $(document).ready(function() {
 				</form>			
 			</div>
 		</div>
-		<div class="circles-item">
+		<div class="">
 		<?php
 			$func->getOpenClasses();
 		?>

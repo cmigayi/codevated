@@ -650,18 +650,17 @@
 					$interest = $this->getInterestCartegoryItem($row['interest_cartegory_id']);
 					$creator = $this->getUserSignUpInfo($row['creator_user_id']);
 					echo "
-					<div class='class-item'>
+					<div class='circles-item'>
 						<h4><a href='getcircles.php?circ=".$row['circle_id']."'>".$row['circle_name']."</a></h4>
 						<p>Cartegory: ".$interest['cartegory_name']."</p>
 						<p>Service Type: ".$row['service_type']."</p>
 						<p>Circle Type: ".$row['circle_type']."</p>
 						<p>Members: ".$row['members']."</p>
 						<p>Creator: ".$creator['username'].", Posted: 2 days ago</p>
-					</div>				
-					
-					<div class='clear'></div>
+					</div>		
 					";
 				}
+                echo "<div class='clear'></div>";
 			}else{
 				echo "<div class='class-notify'>There are currently no open classes.</div>";
 			}

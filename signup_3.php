@@ -337,13 +337,13 @@
 					<?php
 						if($_SESSION['gender'] == "female"){
 							echo "
-								<li><img src='img/female_user.png'/> <input name='gender' type='radio' 									value='female' checked></li>
-					<li><img src='img/male_user.png'/> <input name='gender' type='radio' value='male'/></li>
+								<li><img src='img/female_user.png'/> <input name='gender' type='radio' 									value='female' checked disabled='disabled'></li>
+					<li><img src='img/male_user.png'/> <input name='gender' type='radio' value='male' disabled='disabled'/></li>
 							";
 						}else{
 							echo "
-								<li><img src='img/female_user.png'/> <input name='gender' type='radio' 									value='female'/></li>
-					<li><img src='img/male_user.png'/> <input name='gender' type='radio' value='male'checked></li>
+								<li><img src='img/female_user.png'/> <input name='gender' type='radio' 									value='female' disabled='disabled'/></li>
+					<li><img src='img/male_user.png'/> <input name='gender' type='radio' value='male'checked disabled='disabled'></li>
 							";
 						}
 					?>					
@@ -366,8 +366,8 @@
 			<div class="question">
 				<span>Your profession?</span>
 				<div class="ans">
-					<div class="optns"><input name='profession' type='radio' value='student'/> Student</div>
-					<div class="optns"><input name='profession' type='radio' value='professional'> Professional</div>
+					<div class="optns"><input name='profession' type='radio' value='student' disabled='disabled'/> Student</div>
+					<div class="optns"><input name='profession' type='radio' value='professional' disabled='disabled'/> Professional</div>
 				</div>
 			</div>
 			<div class="question">

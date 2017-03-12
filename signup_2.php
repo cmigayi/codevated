@@ -290,22 +290,22 @@
 		<h4>Personal info:</h4>
 		<h4>Completed</h4>
 		<form action="<?php echo $_SERVER['PHP_SELF']?>" method="post">			
-			<div><input name="username" type="text" value="<?php echo $_SESSION['username'];?>" placeholder="Username"/></div>
-			<div><input name="email" type="text" value="<?php echo $_SESSION['email'];?>" placeholder="Email"/></div>
-			<div><input name="password" type="password" value="<?php echo $_SESSION['password'];?>" placeholder="Password"/></div>
-			<div><input name="password2" type="password" value="<?php echo $_SESSION['password'];?>" placeholder="Match Password"/></div>
+			<div><input name="username" type="text" value="<?php echo $_SESSION['username'];?>" placeholder="Username" disabled></div>
+			<div><input name="email" type="text" value="<?php echo $_SESSION['email'];?>" placeholder="Email" disabled></div>
+			<div><input name="password" type="password" value="<?php echo $_SESSION['password'];?>" placeholder="Password" disabled></div>
+			<div><input name="password2" type="password" value="<?php echo $_SESSION['password'];?>" placeholder="Match Password" disabled></div>
 			<div>
 				<ul><li>Gender:</li>
 					<?php
 						if($_SESSION['gender'] == "female"){
 							echo "
-								<li><img src='img/female_user.png'/> <input name='gender' type='radio' 									value='female' checked></li>
-					<li><img src='img/male_user.png'/> <input name='gender' type='radio' value='male'/></li>
+								<li><img src='img/female_user.png'/> <input name='gender' type='radio' 									value='female' checked disabled='disabled'></li>
+					<li><img src='img/male_user.png'/> <input name='gender' type='radio' value='male' disabled='disabled'/></li>
 							";
 						}else{
 							echo "
-								<li><img src='img/female_user.png'/> <input name='gender' type='radio' 									value='female'/></li>
-					<li><img src='img/male_user.png'/> <input name='gender' type='radio' value='male'checked></li>
+								<li><img src='img/female_user.png'/> <input name='gender' type='radio' 									value='female' disabled='disabled'/></li>
+					<li><img src='img/male_user.png'/> <input name='gender' type='radio' value='male' checked disabled='disabled'></li>
 							";
 						}
 					?>					

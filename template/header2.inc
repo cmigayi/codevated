@@ -100,7 +100,8 @@
 				padding-bottom:10px;
 			}
 			.logo{				
-				width:3%;				
+				width:3%;
+                padding:0px;
 				margin-left:0%;
 				float:left;
 			}
