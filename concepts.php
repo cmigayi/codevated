@@ -122,13 +122,13 @@ $(document).ready(function() {
 		<div class="find-by-title">
 			<h4>Find a concept</h4>
 			<form>				
-				<input name="" type="text" placeholder="Find by discussion  title"/>
+				<input name="" type="text" placeholder="Find concepts by title"/>
 			</form>
 		</div>
 		<div class="find-by-interest">
 			<form>
 				<select name="interest">
-					<option>All Discussions</option>
+					<option>All Concepts</option>
 				</select>
 			</form>	
 		</div>

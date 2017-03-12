@@ -35,9 +35,8 @@ $(document).ready(function() {
 	width:80%;
 	margin-left:10%;
 	border:#edeeef solid 0.1em;
-	border-radius:120px;
+	border-radius:7px;
 	background:#edeeef;
-	padding:1%;
 	overflow:hidden;
 }
 .bio img{
@@ -201,11 +200,11 @@ $(document).ready(function() {
 	text-decoration:underline;
 	color:#74B1ED;
 }
-.current{
+.preference .current{
 	border-bottom:#000 solid 0.1em;
 	border-width:3px;
 }
-.current a{
+.preference .current a{
 	text-decoration:none;
 	color:#000;
 	font-weight:600;
@@ -237,7 +236,12 @@ $(document).ready(function() {
 }
 </style>
 <div class="bio">
-	<div class="prof-img"><?php $func->displayGenderIcon($user);?></div>
+	<div class="prof-img">
+        <img src="img/cilo.jpg"/>
+        <?php 
+            //$func->displayGenderIcon($user);
+        ?>
+    </div>
 	<h4>
 	<?php 
 		if($userData['name'] != "none"){

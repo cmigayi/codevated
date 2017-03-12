@@ -72,6 +72,7 @@ $(document).ready(function() {
 	margin-bottom:2%;
 	padding:1%;
 	border:#eee solid 0.1em;
+    background: #fff;
 }
 .circle-tab-header .find-by-name{
 	float:left;
@@ -122,7 +123,7 @@ $(document).ready(function() {
 	font-weight:500;
 }
 #tabs-1,#tabs-2,#tabs-3{
-	padding:1%;
+	
 }
 .tabs-content-header{
 	background:#ededed;
@@ -131,6 +132,20 @@ $(document).ready(function() {
 	padding:1%;
 	color:#000;
 	width:100%;
+}
+.circles-item{
+	float:left;
+	margin-left:0.5%;
+    margin-top:0.5%;
+    padding:1%;
+	width:31%;
+	height:200px;
+	background:#fff;
+	border:#F2F2F2 solid 0.1em;
+}
+.circles-item:hover{
+	background:#E0E0E0;
+	border:#E0E0E0 solid 0.1em;
 }
 </style>
 <div class="circles-tabs">
@@ -143,9 +158,53 @@ $(document).ready(function() {
   <div id="tabs-1">
 		<div class="circle-tab-header">
 			<div class="find-by-name">
-				<h4>Find by circle name:</h4> 
+				<h4>Find circle by name:</h4> 
 				<form>
-					<input name="" type="text" placeholder="Find by circle name"/>
+					<input name="" type="text" placeholder="Find circle by name"/>
+				</form>			
+			</div>
+			<div class="find-by-interest">
+				<form>
+					<select>
+						<option>Find circle by interest</option>
+					</select>
+				</form>			
+			</div>
+		</div>
+		<div class="circles-item">
+		<?php
+			$func->getOpenClasses();
+		?>
+		</div>
+  </div>
+  <div id="tabs-2">
+      <div class="circle-tab-header">
+			<div class="find-by-name">
+				<h4>Find circle by name:</h4> 
+				<form>
+					<input name="" type="text" placeholder="Find circle by name"/>
+				</form>			
+			</div>
+			<div class="find-by-interest">
+				<form>
+					<select>
+						<option>Find by interest</option>
+					</select>
+				</form>			
+			</div>
+		</div>
+		<div class="">		
+		<?php
+			//$func->getClassesInvite($user);
+		?>
+        </div>
+  </div>
+  <div id="tabs-3">
+        <div class="circle-tab-header">
+			<div class="find-by-name">
+				<h4>Find circle by name:</h4> 
+				<form>
+					<input name="" type="text" placeholder="Find circle by name"/>
 				</form>			
 			</div>
 			<div class="find-by-interest">
@@ -158,24 +217,31 @@ $(document).ready(function() {
 		</div>
 		<div class="">
 		<?php
-			$func->getOpenClasses();
-		?>
-		</div>
-  </div>
-  <div id="tabs-2">
-		<?php
-			//$func->getClassesInvite($user);
-		?>
-  </div>
-  <div id="tabs-3">
-		<?php
 			//$func->getParticipantClasses($user);
 		?>
+        </div>
   </div>
   <div id="tabs-4">
+        <div class="circle-tab-header">
+			<div class="find-by-name">
+				<h4>Find circle by name:</h4> 
+				<form>
+					<input name="" type="text" placeholder="Find circle by name"/>
+				</form>			
+			</div>
+			<div class="find-by-interest">
+				<form>
+					<select>
+						<option>Find by interest</option>
+					</select>
+				</form>			
+			</div>
+		</div>
+		<div class="">
 		<?php
 			//$func->getOtherClasses($user);
 		?>
+        </div>
   </div>
   <div class="clear"></div>
 </div>

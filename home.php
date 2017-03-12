@@ -538,20 +538,17 @@
 	.add-mentor-div-right-top .mentor-rating{
 		width:20%;
 		margin-left:80%;
-		border:#76DB51 solid 0.1em ;
-		background:#76DB51;
-		border-radius:1px;	
+		border-radius:1px;
 	}
-	.mentor-rating img{
-		width:40%;
-		float:left;
-		margin-top:9%;
-	}
+    .mentor-rating img{
+		width:45%;
+        float:left;
+	}	
 	.mentor-rating .rating-text{
-		width:55%;
-		margin-left:45%;
+		width:50%;		
+		margin-left:50%;
 		font-size:12px;
-		color:#fff;
+		color:#000;
 		font-weight:600;
 	}
 	.add-mentor-div-right p{

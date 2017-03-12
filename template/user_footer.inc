@@ -1,7 +1,7 @@
 <div class="clear"></div>
 	<footer>
 		<div class="bottom-color-bar">
-			www.codevated.com | Learn from mentorship & apprentice
+			www.codevated.com | Learn from mentorship & apprenticeship
 		</div>
 		<p>
 		<ul>

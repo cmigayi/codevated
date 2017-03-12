@@ -291,7 +291,7 @@
 							<div class='add-mentor-div-right-top'>
 								<h4>".$userData['username']."</h4>
 								<div class='mentor-rating'>
-								<img src='img/rating3.png'/> <div class='rating-text'>10</div>
+								    <img src='img/rating.png'/> <div class='rating-text'>10</div> 
 								</div>
 							</div>
 							<p>php, sql, laravel</p>
