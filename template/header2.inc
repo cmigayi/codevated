@@ -4,8 +4,8 @@
         <title>codevated.com</title>
 		<!-- App css -->
 		
-		<link rel="shortcut icon" href="" />
-		
+		<link rel="shortcut icon" href="./img/logo.ico" />
+        
 		<!-- Latest compiled and minified CSS -->
 		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
@@ -146,31 +146,28 @@
 				border-width:5px;
 				padding-bottom:10px;				
 			}
-			.online-chat{
+			.post-concept-btn{
 				float:left;
-				width:10%;
-				margin-left:29%;
+				width:8%;
+				margin-left:30%;
 				text-align:center;
+                background:#27ae60;
+                padding:5px;
+                border-radius:5px;
 			}
-			.online-chat img{
+			.post-concept-btn img{
 				width:20%;
 				margin-bottom:2px;
 			}
-			.online-chat .online a {
-				color:#27ae60;
-				font-size:13px;
-				font-weight:500;
-			}
-			.online-chat .online a:hover{
-				text-decoration:none;
-				color:#27ae60;
-			}
-			.online-chat .offline a {
-				font-size:1.1em;
-				color:#3B3B3B;
+			.post-concept-btn a {
+				color:#fff;
+				font-size:12px;
 				font-weight:600;
-				font-size:13px;
 			}
+			.post-concept-btn a:hover{
+				text-decoration:none;
+			}
+			
 			.link2{
 				width:10%;
 				margin-left:90%;
@@ -201,8 +198,20 @@
 				opacity:0.3;
 				text-decoration:none;
 			}
-			.link2 img{
-				width:60%;
+            .link2 .notification{
+                width:60%;
+            }
+            .link2 .notification img{
+                width:100%;
+            }
+            .link2 .img{
+                border-radius:10px;
+                border: #eee solid 0.1em;
+                background: #eee;
+                width:60%;
+            }
+			.link2 .img img{
+				width:100%;
 			}
 			.clear{
 				clear:both;
@@ -377,18 +386,20 @@
 				padding:0.5%;
 				border-bottom:#DBDBDB solid 0.1em;
 				margin-bottom:1%;                
-				width:80%;
-                margin-left:10%;
+				width:90%;
+                margin-left:5%;
 			}
 			.interest-cart-content li:hover{
 				background:#DBDBDB;
+                width:90%;
+                margin-left:5%;
 			}
 			.interest-cart-content li a{
 				color:#242424;
-				font-size:12px;
+				font-size:13px;
 				font-weight:600;
 				float:left;                
-				width:75%;
+				width:85%;
 			}
 			.interest-cart-content li a img{
 				width:10%;
@@ -445,7 +456,10 @@
 			}
 			.interest-content-data-user-img{
 				width:5%;
-				float:left;
+				float:left;                
+                border: #eee solid 0.1em;
+                background: #eee;
+                border-radius:10px;
 			}
 			.interest-content-data-user-img img{
 				width:100%;			
@@ -562,6 +576,7 @@
 				z-index:10;
 				bottom:0%;
 				right:0.5%;
+                display:none;
 			}
 			.chat .chat-header{
 				border:#6c6c6d solid 0.1em ;
@@ -743,10 +758,11 @@
 			}
 			footer{
 				border-top:#E8E8E8 0.1em solid;				
-				width:100%;
+				width:60%;
+                margin-left:21%;
 				padding:7px;
 				font-size:12px;
-				margin-top:5%;
+				margin-top:2%;
 			}
 			footer p{
 				margin-bottom:0px;
@@ -904,27 +920,22 @@ dsdssd dsadas sadsad dsad dsad dsad dsa dsadsa sadsa dsad sadsad.
 			<div class="logo">
 				<a href="home.php"><img src="img/logo.png"/></a>
 			</div>
-				<div class="online-chat">
-					<?php
-						if($func->checkUserOnline($user) == 0){
-							echo "<div class='offline'>
-								<img src='img/offline.png'/> Offline
-</div>";
-						}else{
-							echo "<div class='online'>
-								<a href='#'><img src='img/online2.png'/> ". $func->checkUserOnline($user)." online</a>
-							</div>";
-						}
-					?>
-					
+				<div class="post-concept-btn">				
+					<a href="concept_new.php">Post concept</a>
 				</div>
 				<div class="link2">
 					<ul>					
-					<li><a href="" title="Notification"><img src="img/notify2.png"/></a></li>
 					<li>
-						<a href="#" class="profile-pic-btn" title="Account">
-							<?php $func->displayGenderIcon($user);?>
-						</a>
+                        <div class="notification">
+                            <a href="" title="Notification"><img src="img/notify2.png"/></a>
+                        </div>
+                    </li>
+					<li>
+						<div class="img">
+                            <a href="#" class="profile-pic-btn" title="Account">
+                               <?php $func->displayGenderIcon($user);?>
+						    </a>
+                        </div>
 					</li>
 					</ul>					
 				</div>				

@@ -626,7 +626,7 @@
 		}
 
 		function checkIfMyClasses($userID){
-			$sql = "SELECT * FROM class WHERE creator_user_id='$userID'";			
+			$sql = "SELECT * FROM circle WHERE creator_user_id='$userID'";			
 			$query = mysql_query($sql) or die(mysql_error());			
 			if(mysql_num_rows($query)>0){
 				return true;
@@ -635,13 +635,13 @@
 			}
 		}		
 		function getTotalCircles($circleType){
-			$sql = "SELECT * FROM class WHERE circle_type='$circleType'";
+			$sql = "SELECT * FROM circle WHERE circle_type='$circleType'";
 			$query = mysql_query($sql)or die(mysql_error());
 			return mysql_num_rows($query);
 		}
 		
-		function getOpenClasses(){
-			$sql = "SELECT * FROM class WHERE circle_type='Open'";
+		function getOpenCircles(){
+			$sql = "SELECT * FROM circle WHERE circle_type='Open'";
 			$query = mysql_query($sql)or die(mysql_error());
 			$num = mysql_num_rows($query);
 			if($num>0){

@@ -1,4 +1,5 @@
-<div class="clear"></div>
+<div class="clear">	
+</div>
 	<footer>
 		<div class="bottom-color-bar">
 			www.codevated.com | Learn from mentorship & apprenticeship
@@ -15,6 +16,6 @@
 		</p> 
 		<p>&copy; 2017 Codevated.com, inc </p> 
 	</footer>
-</div>	
+</div>
 </body>
 </html>

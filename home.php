@@ -239,10 +239,15 @@
 		width:100%;
 		padding:1%;
 		margin-bottom:20px;
+        border:#F0F0F0 solid 0.1em;
+		background:#F0F0F0;
 	}
 	.groups-content-header h4{
-		float:left;
+        float:left;
 		width:50%;
+        font-size:14px;
+        font-weight: 600;
+        padding:0.5%;
 	}
 	.groups-content-header .btns{
 		float:right;
@@ -260,11 +265,11 @@
 		width:30%;
 	}
 	.groups-content-header .close-btn{
-		margin-left:70%;
-		width:30%;
-		border:#F0F0F0 solid 0.1em;
-		background:#F0F0F0;
-		padding:0.1%;
+		margin-left:90%;
+		width:10%;
+		border:#eee solid 0.1em;
+        border-radius:5px;
+		background:#F9F9F9;
 		text-align:center;
 	}
 	.groups-content-header .close-btn a{
@@ -340,20 +345,23 @@
 	.posts-content-header{
 		width:100%;        
 		border:#F0F0F0 solid 0.1em;
+		background:#F0F0F0;
         margin-bottom:15px;
+        padding:1%;
 	}
 	.posts-content-header h4{
 		float:left;
 		width:50%;
-        padding:0.5%;
         font-size:14px;
+        font-weight: 600;
+        padding:0.5%;
 	}
 	.posts-content-header .close-btn{
 		margin-left:90%;
 		width:10%;
-		border:#F0F0F0 solid 0.1em;
-		background:#F0F0F0;
-		padding:0.1%;
+		border:#eee solid 0.1em;
+        border-radius:5px;
+		background:#F9F9F9;
 		text-align:center;
 	}
 	.posts-content-header .close-btn a{
@@ -469,9 +477,12 @@
 		margin-left:90%;
 		cursor:pointer;
 	}
-	.suggestions{
-		width:18%;
+    .right-aside{
+        width:18%;
 		margin-left:81%;
+        position: fixed;
+    }
+	.suggestions{		
 		border:solid 0.1em #eaeaea;
 		border-top:none;
 		border-radius:5px 5px 0px 0px;
@@ -564,8 +575,8 @@
 	.add-mentor-btn{
 		background:#eee;
 		border:#ccc solid 0.1em;
-		border-radius:2px;
-		padding:1.5%;
+		border-radius:5px;
+		padding:1%;
 		text-align:center;
 		width:50%;
 		margin-left:30%;
@@ -585,7 +596,64 @@
     .interest-latest-posts{
         width:100%;
     }
-	
+    .suggestions-footer{
+		width:100%;
+		padding:2%;
+        border-top:solid 0.1em #eaeaea;
+        background: #fff;
+    }	
+    .suggestions-footer ul{
+        margin:0px;
+        padding:0px;
+        list-style:disc;
+    }
+    .suggestions-footer li{
+        display:inline;
+        margin-left:5%;
+        width:35%;
+    }
+    .suggestions-footer li a{
+        font-size:12px;
+    }
+    .mentor-chat{
+        border:solid 0.1em #eaeaea;
+		border-radius:5px 5px 0px 0px;
+        margin-top:10%;        
+        background: #fff;
+        padding:1%;
+        padding-bottom: 2%;
+    }
+    .mentor-chat h4{
+        margin-left:5%;
+        width:90%;
+    }
+    .mentor-chat-content{
+        
+    }
+    .mentor-chat-content ul{
+        padding: 0px;
+        margin: 0px;
+        list-style: none;
+    }
+    .mentor-chat-content li{
+        margin-top:2%;
+        border: #ccc solid 0.1em;
+        padding:2%;
+        margin-left:5%;
+        width:90%;
+    }
+    .mentor-chat-content li img{
+        width:10%;
+    }
+    .mentor-chat-content li a{
+        color:#000;
+    }
+    .mentor-chat-content li span img{
+        width:7%;
+    }
+    .mentor-chat-content li span{
+        font-size:12px;
+    }
 </style>
 <script type="text/javascript">			
 	$(document).ready(function(){
@@ -798,11 +866,9 @@
 						<div class="groups-content">
 							<div class="groups-content-header">
 								<h4>Your circles</h4>
-								<div class="btns">
-									<div class="group-info-btn"><img src="img/info.png"/></div>
-									<div class="close-btn"><a href="#">X Close</a></div>
-									<div class="clear"></div>
-								</div>								
+								<div class="close-btn">
+                                    <a href="#">- minimize</a>
+                                </div>				
 							</div>
 							<ul>
 								<li><a href="">CR: Learning java</a></li>
@@ -878,17 +944,68 @@
 					
 				</div>
 			</div>
-			<div class="suggestions">
-				<div class="suggestions-header">
-					<h4>Suggested mentors:</h4>
-				</div>
-				<div class="suggestions-content">
-					<?php
-						$func->getMentorSuggestionsForUser($user);
-					?>
-							
-				</div>
-			</div>
+            <div class="right-aside">
+                <div class="suggestions">
+                    <div class="suggestions-header">
+                        <h4>Suggested mentors:</h4>
+                    </div>
+                    <div class="suggestions-content">
+                        <?php
+                            $func->getMentorSuggestionsForUser($user);
+                        ?>							
+                    </div>
+                    <div class="suggestions-footer">
+                        <ul>
+                            <li><a href="mentor.php">Find a mentor</a></li>
+                            <li><a href="#">Refresh</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mentor-chat">
+                    <h4>Chat</h4>
+                    <div class="mentor-chat-content">
+                        <ul>
+                            <li>
+                                <a href=""><img src="img/mentor.png"/> Jack Oyoo</a>
+                                <span>
+                                    <img src="img/chat_grey.png"/> idle
+                                </span>
+                            </li>
+                            <li>
+                                <a href=""><img src="img/mentor.png"/> Jack Oyoo</a>
+                                <span>
+                                    <img src="img/chat_red.png"/> busy
+                                </span>
+                            </li>
+                            <li>
+                                <a href=""><img src="img/mentee.png"/> Jack Oyoo</a>
+                                <span>
+                                    <img src="img/chat_grey.png"/> idle
+                                </span>
+                            </li>
+                            <li>
+                                <a href=""><img src="img/mentor.png"/> Jack Oyoo</a>
+                                <span>
+                                    <img src="img/chat_red.png"/> busy
+                                </span>
+                            </li>
+                            <li>
+                                <a href=""><img src="img/mentee.png"/> Jack Oyoo</a>
+                                <span>
+                                    <img src="img/chat_green.png"/> active
+                                </span>
+                            </li>
+                            <li>
+                                <a href=""><img src="img/mentor.png"/> Jack Oyoo</a>
+                                <span>
+                                    <img src="img/chat_red.png"/> busy
+                                </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+			
 <?php
 	require_once("template/user_footer.inc");			
 ?>
