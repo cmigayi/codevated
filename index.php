@@ -19,7 +19,17 @@
 		<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
 		
 		  <script type="text/javascript">
-			
+			     $(function () {
+                  count = 0;
+                  wordsArray = ["A platform that connects you to IT professionals & experts that will mentor you in various IT concepts",
+                                "Meet someone that will hold your hand through your IT professional journey"];
+                  setInterval(function () {
+                    count++;
+                    $("#word").fadeOut(1000, function () {
+                      $(this).text(wordsArray[count % wordsArray.length]).fadeIn(1000);
+                    });
+                  }, 10000);
+                });
 
 		  </script>
 			
@@ -63,7 +73,7 @@
 				</div>
 				<div class="search">
 					<form action="" method="get">
-						Learn From Mentorship & Apprentice
+						Learn From Mentorship & Apprenticeship
 						<input name="search" type="text" placeholder="Search Codevated.."/>
 						<input name="submit" type="submit" value="GO"/>
 					</form>
@@ -72,7 +82,7 @@
 			</div>
 			<div class="home-message">
 				<h2>Welcome to Codevated,</h2>
-				<p>A platform that connects you to professionals & experts that will mentor you in various concepts</p>
+				<p id="word">A platform that connects you to IT professionals & experts that will mentor you in various IT concepts</p>
 			</div>
 			<div class="about-icons">
 				<div class="about-icons-items">

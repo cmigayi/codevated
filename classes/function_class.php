@@ -241,7 +241,7 @@
 		}		
 		
 		function getLatestPosts($limit){
-			$sql = "SELECT * FROM concepts ORDER BY dateTime ASC LIMIT $limit ";
+			$sql = "SELECT * FROM concepts ORDER BY dateTime DESC LIMIT $limit ";
 			$query = mysql_query($sql) or die(mysql_error());
 			
 			while($row = mysql_fetch_array($query)){
@@ -272,7 +272,7 @@
 		}	
 		
 		function getMentorSuggestionsForUser($userID){
-			$sql = "SELECT * FROM user_interest WHERE user_id = '$userID'";
+			$sql = "SELECT * FROM user_interest WHERE user_id = '$userID' LIMIT 3";
 			$query = mysql_query($sql) or die(mysql_error());
 			
 			if(mysql_num_rows($query) > 0){
@@ -301,7 +301,6 @@
 								<a href=''><img src='img/add-mentor.png'/> add mentor</a>
 							</div>
 						</div>
-					<div class='clear'></div>
 					</div>					
 					";
 				}

@@ -338,11 +338,15 @@
 		display:block;
 	}
 	.posts-content-header{
-		width:100%;
+		width:100%;        
+		border:#F0F0F0 solid 0.1em;
+        margin-bottom:15px;
 	}
 	.posts-content-header h4{
 		float:left;
 		width:50%;
+        padding:0.5%;
+        font-size:14px;
 	}
 	.posts-content-header .close-btn{
 		margin-left:90%;
@@ -470,7 +474,6 @@
 		margin-left:81%;
 		border:solid 0.1em #eaeaea;
 		border-top:none;
-		margin-top:1%;
 		border-radius:5px 5px 0px 0px;
 	}
 	.suggestions-header{
@@ -494,14 +497,13 @@
 		padding:2%;
 		border-radius:0px 0px 3px 3px;
 		max-height:450px;
-		overflow:auto;
 	}
 	.add-mentor-div:last-child{
 		border-bottom:none;
 	}			
 	.add-mentor-div{
 		width:100%;
-		margin-bottom:7%;
+		margin-bottom:4%;
 		padding:1%;
 		padding-bottom:3%;
 	}
@@ -511,8 +513,10 @@
 	}	
 	.mentor-img{
 		float:left;
-		width:90%;
-		border-radius:9px;
+		width:80%;
+		border-radius:10px;
+        border: #eee solid 0.1em;
+        background: #eee;
 		overflow:hidden;		
 	}
 	.mentor-img img{
@@ -578,6 +582,9 @@
 	.add-mentor-btn a img{
 		width:15%;
 	}
+    .interest-latest-posts{
+        width:100%;
+    }
 	
 </style>
 <script type="text/javascript">			
@@ -654,6 +661,10 @@
 		$('.about_groups_header .close-btn').click(function(){					
 			$('.about_groups').fadeOut(1000).css("display","none");
 		});
+        
+        setInterval(function(){
+            $('.interest-latest-posts').load("latest_posts.php").fadeIn("slow");
+        },1000);
 	});
 </script>
 	<div class="about_interests">
@@ -841,12 +852,11 @@
 						<div class="posts-content">
 							<div class="posts-content-header">
 								<h4>Latest Posts</h4>
-								<div class="close-btn"><a href="#">- minimize</a></div>																
+								<div class="close-btn"><a href="#">- minimize</a></div>								
 							</div>
+							<div class="interest-latest-posts">                  
+                            </div>
 							
-							<?php
-								$func->getLatestPosts(10);
-							?>
 						</div>						
 					</div>
 					<div class="activities">
