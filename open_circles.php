@@ -7,5 +7,6 @@
 	}else{
 		header("Location: index.php");
 	}
-    $func->getLatestPosts($user);
+
+    $func->getOpenCircles();
 ?>

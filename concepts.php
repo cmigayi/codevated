@@ -21,9 +21,11 @@ $(document).ready(function() {
 .concepts{
 	width:79%;
 	margin-left:1%;
-	padding:1%;
     float:left;
-    background: #fff;
+    border:solid 0.1em #eaeaea;
+	border-radius:5px 5px 0px 0px;
+	padding:1%;
+	background:#fcfcfc;
 }
 .concepts-header{
 	margin-bottom:1%;

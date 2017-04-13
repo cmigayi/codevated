@@ -11,25 +11,35 @@ require_once("classes/function_class.php");
 
 	$func = new FunctionClass();
     
-
-if(is_array($_FILES))   
- {  
-      foreach ($_FILES['files']['name'] as $name => $value)  
-      {  
-           $file_name = explode(".", $_FILES['files']['name'][$name]);  
-           $allowed_ext = array("jpg", "jpeg", "png", "gif");  
-           if(in_array($file_name[1], $allowed_ext))  
-           {  
-                $new_name = substr(sha1(mt_rand()),0,50) . '.' . $file_name[1];  
-                $sourcePath = $_FILES['files']['tmp_name'][$name];  
-                $target = "profile_img/".$new_name;  
-                if(move_uploaded_file($sourcePath, $target))  
-                {  
-                     //mysqli_query($con, "INSERT INTO images VALUES('".$target."')");
-                     echo "<img src='$target' />";
-                }                 
-           }            
-      }   
- }  
-
+    if(isset($_FILES['image'])){
+      $errors= array();      
+      $file_size =$_FILES['image']['size'];
+      $file_tmp =$_FILES['image']['tmp_name'];
+      $file_type=$_FILES['image']['type'];
+      $file_ext=strtolower(end(explode('.',$_FILES['image']['name'])));
+      $file_name = $user.".".$file_ext;
+        
+      $expensions= array("jpeg","jpg","png");
+      
+      if(in_array($file_ext,$expensions)=== false){
+         $errors[]="extension not allowed, please choose a JPEG or PNG file.";
+      }
+      
+      if($file_size > 2097152){
+         $errors[]='File size must be excately 2 MB';
+      }
+      
+      if(empty($errors)==true){
+         if(move_uploaded_file($file_tmp,"profile_img/".$file_name)){
+             $imgLink = "http://localhost/codevated/profile_img/".$file_name;
+             if($func->updateUploadedProfilePic($user,$imgLink)==true){
+                 echo "Upload successful!";
+             }else{
+                 echo "Upload failed!";
+             }
+         }
+      }else{
+         print_r($errors);
+      }
+   }
 ?>

@@ -14,20 +14,22 @@
 	require_once("template/header2.inc");	
 ?>
 <script>
-    $(document).ready(function() {
-            $('.form-upload-pic').submit(function(e) {
-                e.preventDefault();  
-               $.ajax({  
-                    url: "upload.php",  
-                    type: "POST",  
-                    data: new FormData(this),  
-                    contentType: false,  
-                    processData:false,  
-                    success: function(status) {
-                        $('#result').append(status);
-                    }
-                });
-            });
+    $(document).ready(function(e) {
+//            $(".form-upload-pic").on('submit',(function(e){
+//                e.preventDefault(); 
+//                var image = $('input[name=image]').val();
+//               $.ajax({  
+//                    url: "profileImgUpload.php",  
+//                    type: "POST",  
+//                    data: new FormData(this),    
+//                    success: function(status) {
+//                        $('.result').append(status);
+//                    },
+//                    error: function(a,b){
+//                        alert("error");
+//                    }
+//                });
+//            }));
         });
 </script>
 <style>
@@ -169,16 +171,17 @@
 		<div><input name="location" type="text" placeholder="Where are you based / live?"/></div>
 		<div><input name="submit" type="submit" value="Update Profile"/></div>
 	</form>
-	<form class="form-upload-pic" action="<?php echo $_SERVER['PHP_SELF'];?>" method="post">
+	<form class="form-upload-pic" action="profileImgUpload.php" method="POST" enctype="multipart/form-data">
 		<h4>Profile picture</h4>
 		<div class="prof-img">
 			<?php $func->displayGenderIcon($user);?>
 		</div>
 		<div>
-			<input name="files" type="file"/>
+			<input name="image" type="file"/>
 		</div>
-		<div><input name="submit" type="submit" value="Upload new picture"/></div>
+		<div><input id="submit" name="submit" type="submit" value="Upload new picture"/></div>
 	</form>
+    <div class="result"></div>
 </div>
 <?php
 	require_once("template/user_footer.inc");			

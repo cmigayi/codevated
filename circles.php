@@ -9,15 +9,38 @@
 	}
 
 	$func = new FunctionClass();
+
+    if(isset($_GET['c'])){
+        $circle = $_GET['c'];
+    }
 	
 	require_once("template/header2.inc");	
 ?>
 <script>
 $(document).ready(function() {
-    $("li").click(function() {
-        $("li").removeClass('current');
+    $(".circles-tabs-menu li").click(function() {
+        $(".circles-tabs-menu li").removeClass('current');
         $(this).addClass('current');
     });
+    
+     $('.circle-btns ul li:first-child').click(function(){       
+        $.ajax({
+            url:"join_circle.php",
+            type:"POST",
+            data:{'circle_id':1},
+            success: function(result){ 
+                alert(result);
+                //$('.open-circle').load("open_circles.php").fadeIn(1000);
+            },
+            error: function(a,b,c){
+                alert(error);
+            }
+        });
+     });
+       
+    setInterval(function(){
+        $('.open-circle').load("open_circles.php").fadeIn(1000);
+    },1000);
 });
 </script>
 <style>
@@ -25,8 +48,10 @@ $(document).ready(function() {
     width:79%;
     float:left;
     margin-left:1%;
-    background: #fff;
-    padding:1%;
+    border:solid 0.1em #eaeaea;
+	border-radius:5px 5px 0px 0px;
+	padding:1%;
+	background:#fcfcfc;
 }
 .circles-tabs{
 	width:98%;
@@ -35,7 +60,7 @@ $(document).ready(function() {
 .circles-tabs ul{
 	list-style:none;
 	width:100%;
-    margin-bottom:0px;
+    margin-bottom:1%;
 	padding:0px;
 	padding-bottom:5px;
 	border-bottom:#ddd solid 0.1em;
@@ -82,6 +107,7 @@ $(document).ready(function() {
     background: #fff;
 	width:98%;    
     margin-left: 1%;
+    margin-bottom:2%;
 }
 .circle-tab-header .find-by-name{
 	float:left;
@@ -100,7 +126,7 @@ $(document).ready(function() {
 .circle-tab-header .find-by-name form input[type="text"]{
 	width:100%;
 	border:#ddd solid 0.1em;
-	padding:1.5%;
+	padding:2%;
 	border-radius:1px;
     font-size:13px;
 }
@@ -111,7 +137,7 @@ $(document).ready(function() {
 .circle-tab-header .find-by-interest form{}
 .circle-tab-header .find-by-interest form select{
 	width:100%;
-	padding:1%;
+	padding:2%;
 	background:#76DB51;
 	color:#fff;
 	border:#76DB51 solid 0.1em;
@@ -137,14 +163,6 @@ $(document).ready(function() {
     background: #fff;
     padding: 1%;
 }
-.tabs-content-header{
-	background:#ededed;
-	border:#ccc solid 0.1em;
-	border-radius:2px 2px 0px 0px;
-	padding:1%;
-	color:#000;
-	width:100%;
-}
 .circles-item{
 	float:left;
 	margin:1%;
@@ -156,8 +174,40 @@ $(document).ready(function() {
     border-radius:3px;
 }
 .circles-item:hover{
-	background:#E0E0E0;
-	border:#E0E0E0 solid 0.1em;
+	background:#eee;
+	border:#eee solid 0.1em;
+}
+.circles-item .circle-desc{
+    margin-bottom: 2%;
+}
+.circles-item .circle-btns{
+    margin-left:20%;
+    width:80%;
+}
+.circles-item .circle-btns ul{
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    border: none;
+}
+.circles-item .circle-btns li{
+    float:left;
+    background: #97b1fc;
+    border:#97b1fc solid 0.1em;
+    border-radius:1px;
+    color:#fff;
+    text-align:center;
+    padding: 1%;
+    width:30%;
+    margin-left: 1%;
+}
+.circles-item .circle-btns li:last-child{
+    background:#fff;
+    border:#ccc solid 0.1em;
+    color:#000;
+}
+.circles-item .circle-btns li:hover{
+    cursor: pointer;
 }
 .right-aside{
         width:18%;
@@ -338,7 +388,7 @@ $(document).ready(function() {
 </style>
 <div class="circle-content">
 <div class="circles-tabs">
-  <ul>
+  <ul class="circles-tabs-menu">
   <li class="current"><a href="#tabs-1">Open <span><?php echo $func->getTotalCircles("Open");?></span></a></li>
 	<li><a href="#tabs-2">Member <span>1100</span></a></li>
 	<li><a href="#tabs-3">Your Circles <span>5</span></a></li>
@@ -360,10 +410,8 @@ $(document).ready(function() {
 				</form>			
 			</div>
 		</div>
-		<div class="">
-		<?php
-			$func->getOpenCircles();
-		?>
+		<div class="open-circle">
+		
 		</div>
   </div>
   <div id="tabs-2">
@@ -406,7 +454,7 @@ $(document).ready(function() {
 		</div>
 		<div class="">
 		<?php
-			//$func->getParticipantClasses($user);
+			$func->getUserCircles($user);
 		?>
         </div>
   </div>

@@ -118,8 +118,8 @@
 		function signUpUser($username,$email,$password,$gender){
 			$pwd = md5($password);
 			$code = md5(uniqid(rand()));
-			$sql = "INSERT INTO users (name,location,bio,username,email,password,phone,gender,codevatedTeam,userStatus,regCode,dateTime) 
-			VALUES('none','none','none','$username','$email','$pwd','none','$gender','n','n','$code',NOW())";
+			$sql = "INSERT INTO users (name,location,bio,username,email,password,phone,profImg,gender,codevatedTeam,userStatus,regCode,dateTime) 
+			VALUES('none','none','none','$username','$email','$pwd','none','n','$gender','n','n','$code',NOW())";
 			$query = mysql_query($sql)or die(mysql_error());
 			$userid = mysql_insert_id(); 
 			
@@ -225,6 +225,16 @@
 				return false;
 			}
 		}
+        
+        function updateUploadedProfilePic($user,$imgLink){
+            $sql="UPDATE users SET profImg='$imgLink' WHERE user_id='$user'";
+            $query = mysql_query($sql) or die(mysql_error());
+            if($query){
+                return true;
+            }else{
+                return false;
+            }
+        }
 		
 		function getSpecialityItem($specialityID){
 			$sql = "SELECT * FROM speciality WHERE speciality_id='$specialityID'";
@@ -238,37 +248,48 @@
 			$query = mysql_query($sql) or die(mysql_error());
 			
 			return mysql_fetch_array($query);
-		}		
-		
-		function getLatestPosts($limit){
-			$sql = "SELECT * FROM concepts ORDER BY dateTime DESC LIMIT $limit ";
+		}
+        
+		function getLatestPosts($userID){
+			$sql = "SELECT * FROM concepts ORDER BY dateTime DESC";
 			$query = mysql_query($sql) or die(mysql_error());
-			
+			$count=0;
 			while($row = mysql_fetch_array($query)){
-				$interest = $this->getInterestCartegoryItem($row['interest_cartegory_id']);
-				$userData = $this->getUserSignUpInfo($row['user_id']);
-				echo "
-					<div class='interest-content-data'>
-						<div class='interest-content-data-user-img'>						<img src='img/female_user.png'/>
-						</div>
-						<div class='interest-content-data-div'>
-							<p><span class='tut-type'>".$interest['cartegory_name'].":</span>
-							<a href='concept_item.php?c=".$row['concept_id']."'>".$row['name']."</a>
-							</p>
-							<div class='post-info'>
-								Content: Video | Resources: Attached |
-								Posted by <a href=''>".ucwords($userData['username'])."</a>,
-								<span>".date('D, d-M-Y',strtotime($row['dateTime']))."</span>
-							</div>
-						</div>
-						
-						<div class='more-info'>
-							<img src='img/watched_dark.png'/><span>".$row['views']."</span>
-						</div>
-					</div>
-					
-				";
-			}
+                if($count < 10){
+                    $userInterest = $this->checkIfItsUserInterest($userID,$row['interest_cartegory_id']);                
+                    if($userInterest==true){
+                        $interest = $this->getInterestCartegoryItem($row['interest_cartegory_id']);
+                    $userData = $this->getUserSignUpInfo($row['user_id']);
+                    echo "
+                        <div class='interest-content-data'>
+                            <div class='interest-content-data-user-img'>				<img src='".$this->getUserProfileImg($userData['user_id'])."'/>
+                            </div>
+                            <div class='interest-content-data-div'>
+                                <p><span class='tut-type'>".$interest['cartegory_name'].":</span>
+                                <a href='concept_item.php?c=".$row['concept_id']."'>".$row['name']."</a>
+                                </p>
+                                <div class='post-info'>
+                                    Content: Video | Resources: Attached |
+                                    Posted by <a href=''>".ucwords($userData['username'])."</a>,
+                                    <span>".date('D, d-M-Y',strtotime($row['dateTime']))."</span>
+                                </div>
+                            </div>
+
+                            <div class='more-info'>
+                                <img src='img/watched_dark.png'/><span>".$row['views']."</span>
+                            </div>
+                        </div>
+
+                    ";
+                        $count++;                        
+                    }                    
+                }                
+                
+			}          
+            if(empty($interest)){
+                echo "<div class='notify'>Sorry no posts on your interests yet, be the first to post a concept on your interests!</div>";
+                
+            }
 		}	
 		
 		function getMentorSuggestionsForUser($userID){
@@ -284,14 +305,16 @@
 						<div class='add-mentor-div'>
 						<div class='add-mentor-div-left'>
 							<div class='mentor-img'>
-								<img src='img/female_user.png'/>
+								<img src='".
+                        $this->getUserProfileImg($userData['user_id'])
+                        ."'/>
 							</div>
 						</div>
 						<div class='add-mentor-div-right'>
 							<div class='add-mentor-div-right-top'>
 								<h4>".$userData['username']."</h4>
 								<div class='mentor-rating'>
-								    <img src='img/rating.png'/> <div class='rating-text'>10</div> 
+                                    <div class='rating-text'>10</div> 
 								</div>
 							</div>
 							<p>php, sql, laravel</p>
@@ -323,13 +346,31 @@
 		}
 		
 		function displayGenderIcon($userID){
-			$gender = $this->checkGender($userID);
-			if($gender == "female"){
-				echo "<img src='img/female_user.png'/>";
-			}else{
-				echo "<img src='img/male_user.png'/>";
-			}
-		}		
+            $userData = $this->getUserSignUpInfo($userID);
+            
+            if($userData['profImg'] == "" || $userData['profImg'] == 'n'){
+                if($userData['gender'] == "female"){
+                    echo "<img src='img/female_user.png'/>";
+                }else{
+                    echo "<img src='img/male_user.png'/>";
+                }
+            }else{
+                echo "<img src='".$userData['profImg']."'/>";
+            }			
+		}
+        function getUserProfileImg($userID){
+            $userData = $this->getUserSignUpInfo($userID);
+            
+            if($userData['profImg'] == "" || $userData['profImg'] == 'n'){
+                if($userData['gender'] == "female"){
+                    return "img/female_user.png";
+                }else{
+                    return "img/male_user.png";
+                }
+            }else{
+                return $userData['profImg'];
+            }
+        }
 		function addUserInterest($userID,$cartegoryID){
 			$sql = "INSERT INTO user_interest (user_id,interest_cartegory_id,dateTime) 
 			VALUES ('$userID','$cartegoryID',NOW())";
@@ -633,7 +674,16 @@
 			}else{
 				return false;
 			}
-		}		
+		}
+        function getCircle($circleID){
+            $sql = "SELECT * FROM circle WHERE circle_id='$circleID'";
+			$query = mysql_query($sql)or die(mysql_error());
+			if(mysql_num_rows($query) == 1){                
+                return mysql_fetch_array($query);                
+            }else{
+                return false;
+            }
+        }
 		function getTotalCircles($circleType){
 			$sql = "SELECT * FROM circle WHERE circle_type='$circleType'";
 			$query = mysql_query($sql)or die(mysql_error());
@@ -651,20 +701,65 @@
 					echo "
 					<div class='circles-item'>
 						<h4><a href='getcircles.php?circ=".$row['circle_id']."'>".$row['circle_name']."</a></h4>
+						<div class='circle-desc'>
+                            Cartegory: ".$interest['cartegory_name'].",
+                            Service Type: ".$row['service_type'].",
+                            Circle Type: ".$row['circle_type'].",
+                            Members: ".$row['members'].",
+                            Creator: ".$creator['username'].", Posted: 2 days ago
+                        </div>
+                        <div class='circle-btns'>
+                            <ul>
+                                <li>Join</a></li>
+                                <li>Preview</li>
+                            </ul>
+                        </div>
+					</div>		
+					";
+				}
+                echo "<div class='clear'></div>";
+			}else{
+				echo "<div class='class-notify'>There are currently no open circles.</div>";
+			}			
+		}        
+        function getUserCircles($userID){
+			$sql = "SELECT * FROM user_circle WHERE user_id='$userID'";
+			$query = mysql_query($sql)or die(mysql_error());
+			$num = mysql_num_rows($query);
+			if($num>0){
+				while($row = mysql_fetch_array($query)){
+                    $circleData = $this->getCircle($row['circle_id']);
+					$interest = $this->getInterestCartegoryItem($circleData['interest_cartegory_id']);
+					$creator = $this->getUserSignUpInfo($circleData['creator_user_id']);
+					echo "
+					<div class='circle'>
+						<h4><a href='getcircles.php?circ=".$circleData['circle_id']."'>".$circleData['circle_name']."</a></h4>
 						<p>Cartegory: ".$interest['cartegory_name']."</p>
-						<p>Service Type: ".$row['service_type']."</p>
-						<p>Circle Type: ".$row['circle_type']."</p>
-						<p>Members: ".$row['members']."</p>
+						<p>Service Type: ".$circleData['service_type']."</p>
+						<p>Circle Type: ".$circleData['circle_type']."</p>
+						<p>Members: ".$circleData['members']."</p>
 						<p>Creator: ".$creator['username'].", Posted: 2 days ago</p>
 					</div>		
 					";
 				}
                 echo "<div class='clear'></div>";
 			}else{
-				echo "<div class='class-notify'>There are currently no open classes.</div>";
+				echo "<div class='class-notify'>
+                        You are currently not a member of any circle.
+                    </div>";
 			}
 			
 		}
+        function addUserToCircle($userID,$circleID){
+            $sql="INSERT INTO user_circle(circle_id,user_id,dateTime) VALUES('$circleID','$userID',NOW())";
+			$query = mysql_query($sql)or die(mysql_error());
+
+			if($query){
+				return true;
+			}else{
+				return false;
+			}
+        }
 
 		function updateConceptView($conceptID,$views){
 			$views = $views+1;

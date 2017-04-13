@@ -23,10 +23,12 @@ $(document).ready(function() {
 <style>
 	.mentor-page{
 		width:79%;
-		padding:1%;
         margin-left:1%;
-        background:#fff;
         float:left;
+        border:solid 0.1em #eaeaea;
+        border-radius:5px 5px 0px 0px;
+        padding:1%;
+        background:#fcfcfc;
 	}
 	.mentor-page-header{
 		width:90%;

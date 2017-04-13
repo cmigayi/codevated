@@ -299,31 +299,29 @@
 	}
 	.group-notice span a:hover{
 		text-decoration:none;
-	}
-	.groups ul{
-		list-style:none;				
-		background:#F5F5F5;
-		padding:1%;
 	}	
-	.groups li{
+	.groups .circle-data{
+		width:100%;
+	}
+    .groups .circle{
 		float:left;
-		width:15%;
-		margin-left:1%;
-		margin-bottom:1%;
-		border:#757575 solid 0.1em;
+		width:46%;
+		margin-left:2%;
+		margin-bottom:2%;
+		border:#ddd solid 0.1em;
 		border-radius:3px;
-		background:#757575;
+		background:#fff;
 		padding:0.5%;
 		text-align:center;
 	}
-	.groups li a{		
-		color:#fff;
-	}
+    .groups .circle h4 a{
+        color:#97b1fc;
+    }
 	.open-group{
 		cursor:pointer;
 		width:100%;
 		border-bottom:#ddd solid 0.1em;
-		border-width:2px;
+		border-width:3px;
 		font-size:13px;
 		font-weight:600;
 	}
@@ -382,9 +380,17 @@
 	}
 	.activities-content-header{
 		width:100%;
+        border:#F0F0F0 solid 0.1em;
+		background:#F0F0F0;
+        margin-bottom:15px;
+        padding:1%;
 	}
-	.activities-content-header h4{		
-		width:50%;
+	.activities-content-header h4{	
+        width:50%;
+        font-size:14px;
+        font-weight: 600;
+        padding:0.5%;
+        margin-bottom:0px;
 	}
 	.activities-content ul{
 		list-style:none;
@@ -513,30 +519,33 @@
 		border-bottom:none;
 	}			
 	.add-mentor-div{
-		width:100%;
-		margin-bottom:4%;
+		width:90%;
+        margin-left:5%;
+		margin-bottom:3%;
 		padding:1%;
 		padding-bottom:3%;
+        border-bottom:#ccc dotted 0.1em;
 	}
 	.add-mentor-div-left{
 		float:left;
-		width:30%;	
+		width:20%;	
 	}	
 	.mentor-img{
 		float:left;
-		width:80%;
+		width:100%;
 		border-radius:10px;
         border: #eee solid 0.1em;
         background: #eee;
-		overflow:hidden;		
+		overflow:hidden;
+        height:40px;        
 	}
 	.mentor-img img{
 		width:100%;
 		margin-left:0%;
 	}
 	.add-mentor-div-right{
-		margin-left:32%;
-		width:68%;
+		margin-left:25%;
+		width:75%;
 	}
 	.add-mentor-div-right-top{
 		width:100%;	
@@ -551,17 +560,14 @@
 		margin-bottom:0px;	
 	}
 	.add-mentor-div-right-top .mentor-rating{
-		width:20%;
-		margin-left:80%;
-		border-radius:1px;
-	}
-    .mentor-rating img{
-		width:45%;
-        float:left;
+		width:15%;
+		margin-left:85%;
+		border-radius:3px;
+        background:#ccc;
+        text-align:center;
 	}	
 	.mentor-rating .rating-text{
-		width:50%;		
-		margin-left:50%;
+		width:100%;	
 		font-size:12px;
 		color:#000;
 		font-weight:600;
@@ -575,11 +581,11 @@
 	.add-mentor-btn{
 		background:#eee;
 		border:#ccc solid 0.1em;
-		border-radius:5px;
-		padding:1%;
+		border-radius:3px;
+		padding:2%;
 		text-align:center;
-		width:50%;
-		margin-left:30%;
+		width:60%;
+		margin-left:25%;
 		font-size:12px;
 	}
 	.add-mentor-btn a{
@@ -726,9 +732,30 @@
 			$('.about_groups').css("display","block");
 		});
 		
-		$('.about_groups_header .close-btn').click(function(){					
+		$('.about_groups_header .close-btn').click(function(){	
 			$('.about_groups').fadeOut(1000).css("display","none");
 		});
+        
+        $('.interest-cart .unhide').click(function(event){
+            event.preventDefault();
+            var t = <?php echo $userTotalInterest;?>;            
+            var h = $('.interest-cart-content').height();
+            var hauto = $('.interest-cart-content').css("height","auto").height();
+            if(h == 240){
+                $('.interest-cart-content')
+                    .animate({height:hauto});
+                $(this).text("Hide");
+                $('.interest-cart-content-footer li:first-child')
+                    .text("0 items hidden");
+            }else{ 
+                $('.interest-cart-content')
+                    .animate({height:'240px',overflow:'hidden'});
+                $(this).text("Show");
+                var s = t-6;
+                $('.interest-cart-content-footer li:first-child')
+                    .text(s+" items hidden");
+            } 
+        });
         
         setInterval(function(){
             $('.interest-latest-posts').load("latest_posts.php").fadeIn("slow");
@@ -829,6 +856,7 @@
 		</form>
 	</div>
 <div class="interests">
+            <div class="left-aside">
 				<div class="interest-cart">
 					<div class="interest-cart-header">
 						<h4>Interests <span><?php echo $userTotalInterest;?></span></h4>
@@ -845,7 +873,63 @@
 							}							
 						?>
 					</div>
+                    <div class="interest-cart-content-footer">
+                        <ul>
+                            <?php
+                                $total = $userTotalInterest-6;
+                                
+                                if($total <= 0){
+                                    $total = 0;
+                                echo "<li>".$total." items hidden</li>
+                                <li></li>";
+                                } else{
+                                echo "<li>".$total." items hidden</li>
+                                <li>
+                                    <a href='#' class='unhide'>Show</a>
+                                </li>";
+                                }    
+                            ?>
+                        </ul>
+                    </div>
 				</div>
+                <div class="discussion-tab">
+                    <div class="discussion-tab-header">
+                        <h4>Discussions</h4>
+                        <div class="unhide">
+                            <a href="discussions.php">Page</a></div>
+                    </div>
+                    <div class="discussion-tab-content">
+                        <ul>                            
+                            <li>
+                                The best business models to adopt when running an IT consulting business with industrial examples 
+                                <div class="list-item-footer">
+                                    <ul>
+                                        <li>
+                                            <img src="img/participants.png"/>    0                     
+                                        </li>
+                                        <li>
+                                            <img src="img/watched_dark.png"/>   0                      
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li>
+                                The best business models to adopt when running an IT consulting business with industrial examples 
+                                <div class="list-item-footer">
+                                    <ul>
+                                        <li>
+                                            <img src="img/participants.png"/>   0                    
+                                        </li>
+                                        <li>
+                                            <img src="img/watched_dark.png"/>   0                      
+                                        </li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
 				<div class="interest-content">
 					<div class="groups">
 					
@@ -870,32 +954,12 @@
                                     <a href="#">- minimize</a>
                                 </div>				
 							</div>
-							<ul>
-								<li><a href="">CR: Learning java</a></li>
-								<li><a href="">CO: Class angular</a></li>
-								<li><a href="">CR: Keeping it UX</a></li>
-								<li><a href="">CR: Keeping up with the AngularJS</a></li>
-								<li><a href="">CO: more</a></li>
-								<li><a href="">CR: Learning java</a></li>
-								<li><a href="">CO: Class angular</a></li>
-								<li><a href="">CR: Keeping it UX</a></li>
-								<li><a href="">CR: Learning java</a></li>
-								<li><a href="">CO: Class angular</a></li>
-								<li><a href="">CR: Keeping it UX</a></li>
-								<li><a href="">CR: Learning java</a></li>
-								<li><a href="">CO: Class angular</a></li>
-								<li><a href="">CR: Keeping it UX</a></li>
-								<li><a href="">CR: Learning java</a></li>
-								<li><a href="">CO: Class angular</a></li>
-								<li><a href="">CR: Keeping it UX</a></li>
-								<li><a href="">CR: Learning java</a></li>
-								<li><a href="">CO: Class angular</a></li>
-								<li><a href="">CR: Keeping it UX</a></li>
-								<li><a href="">CR: Keeping up with the AngularJS</a></li>
-								<li><a href="">CR: Keeping up with the AngularJS</a></li>
-								<li><a href="">CR: Keeping up with the AngularJS</a></li>
-								<div class="clear"></div>								
-							</ul> 
+							<div class="circle-data">
+                                <?php
+                                    $func->getUserCircles($user);
+                                ?>
+                            </div>
+							<div class="clear"></div>						
 						</div>
 					</div>
 					
@@ -920,7 +984,7 @@
 								<h4>Latest Posts</h4>
 								<div class="close-btn"><a href="#">- minimize</a></div>								
 							</div>
-							<div class="interest-latest-posts">                  
+							<div class="interest-latest-posts">                      <div class="wait-loading">Wait loading data...</div>
                             </div>
 							
 						</div>						

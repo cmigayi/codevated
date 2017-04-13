@@ -57,7 +57,7 @@
 					$('.people-online').css("display","none");
 				});				
 
-				$('html').click(function(){
+				$('html').click(function(event){
 					//$('.dark-cover').css("display","none");
 					$('.profile-popup-menu').css("display","none");
 					//$('.people-online').css("display","none");
@@ -81,6 +81,21 @@
 		  </script>
 			
 		<style>
+            a{}
+            a:hover{}
+            a:visited{
+                outline:none;
+            }
+            a:active{
+                outline:none;
+            }
+            a:link{
+                outline:none;
+                text-decoration:none;
+            }
+            .wait-loading{
+                text-align:center;
+            }
 			body{
 				background:#e2e2e2;
 			}
@@ -148,16 +163,15 @@
 			}
 			.post-concept-btn{
 				float:left;
-				width:8%;
-				margin-left:30%;
+				width:10%;
+				margin-left:27%;
 				text-align:center;
                 background:#27ae60;
-                padding:5px;
-                border-radius:5px;
+                padding:3px;
+                border-radius:2px;
 			}
 			.post-concept-btn img{
 				width:20%;
-				margin-bottom:2px;
 			}
 			.post-concept-btn a {
 				color:#fff;
@@ -209,6 +223,8 @@
                 border: #eee solid 0.1em;
                 background: #eee;
                 width:60%;
+                height:30px;
+                overflow:hidden;
             }
 			.link2 .img img{
 				width:100%;
@@ -264,12 +280,11 @@
 				color:#fff;
 			}
 			.notify{
-				z-index:1001;
-				position:absolute;
-				left:30%;
-				top:30%;
-				width:100%;
-				display:none;
+				margin-left:10%;
+				width:80%;
+                background:#fcf9d6;
+                padding:1%;
+                border-radius:3px;
 			}
 			.notify img{
 				width:4%;
@@ -315,14 +330,18 @@
 				width:100%;
 				background:#f2f9f3;
 				position:absolute;
-				top:4%;
+				top:4%;                
+                min-height:700px;
 			}
 			.interests{
 			}
-			.interest-cart{
-				float:left;
+            .left-aside{
+                float:left;
                 margin-left:2%;
 				width:18%;
+            }
+			.interest-cart{
+				width:100%;
 				border:solid 0.1em #eaeaea;
 				border-radius:5px 5px 0px 0px;
 			}
@@ -368,9 +387,9 @@
 			}
 			.interest-cart-content{
 				background:#fcfcfc;
-				padding:1%;
 				width:100%;
-				border-radius:0px 0px 3px 3px;
+                height:240px;
+                overflow:hidden;
 			}
 			.interest-cart-content p{
 				padding:2%;
@@ -427,6 +446,88 @@
 				font-size:11px;
 				text-align:left;
 			}
+            .interest-cart-content-footer{
+                border-top:#d6d6d6 0.1em solid;
+                background:#fcfcfc;
+                padding:1%;
+            }
+            .interest-cart-content-footer ul{
+                margin:0px;
+                padding:0px;
+            }
+            .interest-cart-content-footer li{
+                display:inline;
+                width:25%;
+                margin-left:5%;
+                font-size:12px; 
+            }
+            .interest-cart-content-footer li:last-child{
+                margin-left:37%;
+                text-align:right;
+            }
+            .left-aside .discussion-tab{
+                background:#fcfcfc;
+                padding:1%;
+                margin-top:10%;
+                border:solid 0.1em #eaeaea;
+				border-radius:5px 5px 0px 0px;
+            }
+            .left-aside .discussion-tab-header{
+                padding:2%;
+                border-bottom:#ccc solid 0.1em;
+            } 
+            .left-aside .discussion-tab-header h4{
+                float:left;
+                width:50%;
+                font-size:14px;
+                margin-top:0px;
+                font-weight:600;
+            } 
+            .left-aside .discussion-tab-header .unhide{
+                width:20%;
+                margin-left:80%;
+                font-size:13px;
+                text-align:center;
+            }
+            .left-aside .discussion-tab-content{
+                padding:1%;
+                height:240px;
+            }
+            .left-aside .discussion-tab-content ul{
+                margin:0px;
+                padding:0px;
+                list-style:none;
+            }
+            .left-aside .discussion-tab-content li{
+                margin-top:2%;
+                border-bottom:solid 0.1em #ccc;
+                padding:1%;
+                font-size:13px;
+            }
+            .left-aside .discussion-tab-content li:last-child{
+                border-bottom:none;
+            }
+            .discussion-tab-content li .list-item-footer{
+                width:100%;
+                border-top:solid 0.1em #f3f2f2;
+                background: #f3f2f2;
+                margin-top:2%;
+            }
+            .discussion-tab-content li .list-item-footer ul{
+                margin:0px;
+                padding:0px;
+                list-style:none;
+            }
+            .discussion-tab-content li .list-item-footer li{
+                display:inline;
+                margin-left:5%;
+                width:5%;
+                border:none;
+                font-size:12px;
+            }
+            .discussion-tab-content li .list-item-footer li img{  
+                width:10%;
+            }
 			.interest-content{
 				width:59%;
 				margin-left:1%;
@@ -448,18 +549,22 @@
 				border-bottom:#eee solid 0.1em;
 				overflow:auto;				
 			}
-			.interest-content .interest-content-data:hover{}
+			.interest-content .interest-content-data:hover{
+                background:#efefef;
+            }
 			.interest-content .interest-content-data a{
 				text-decoration:none;
 				color:#3c3c3d;
 				font-size:14px;
 			}
 			.interest-content-data-user-img{
-				width:5%;
+				width:6%;
+                height:41px;
 				float:left;                
                 border: #eee solid 0.1em;
                 background: #eee;
                 border-radius:10px;
+                overflow:hidden;
 			}
 			.interest-content-data-user-img img{
 				width:100%;			
@@ -921,7 +1026,9 @@ dsdssd dsadas sadsad dsad dsad dsad dsa dsadsa sadsa dsad sadsad.
 				<a href="home.php"><img src="img/logo.png"/></a>
 			</div>
 				<div class="post-concept-btn">				
-					<a href="concept_new.php">Post concept</a>
+					<a href="concept_new.php">
+                        <img src="img/post_concept2.png"/> Post concept
+                    </a>
 				</div>
 				<div class="link2">
 					<ul>					
