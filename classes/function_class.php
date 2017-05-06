@@ -771,7 +771,520 @@
 				return false;
 			}
 		}
-		
+
+		function getAllIndustries(){
+			$sql="SELECT * FROM industry";
+			$query=mysql_query($sql)or die(mysql_error());
+
+			$content["industries"] = array();
+
+			while($row=mysql_fetch_array($query)){		
+				$data = array();
+				$data['industry_id'] = $row['industry_id'];
+				$data['industry_name'] = $row['industry_name'];
+
+				array_push($content["industries"] , $data);
+			}
+
+			return $content;
+		}
+
+		function getAllSpecialities(){
+			$sql="SELECT * FROM speciality";
+			$query=mysql_query($sql)or die(mysql_error());
+
+			$content["specialities"] = array();
+
+			while($row=mysql_fetch_array($query)){		
+				$data = array();
+				$data['speciality_id'] = $row['speciality_id'];
+				$data['speciality_name'] = $row['speciality_name'];
+				$data['industry_id'] = $row['industry_id'];
+
+				array_push($content["specialities"] , $data);
+			}
+
+			return $content;
+		}
+
+		function getAllInterests(){
+			$sql="SELECT * FROM interest_cartegory ORDER BY cartegory_name ASC";
+			$query=mysql_query($sql)or die(mysql_error());
+
+			$content["interests"] = array();
+
+			while($row=mysql_fetch_array($query)){		
+				$data = array();
+				$data['interest_cartegory_id'] = $row['interest_cartegory_id'];
+				$data['speciality_id'] = $row['speciality_id'];
+				$data['cartegory_name'] = $row['cartegory_name'];
+				$data['cartegory_total'] = $this->getTotalConceptsPerInterest($row['interest_cartegory_id']);
+				$data['cartegory_icon'] = "http://10.0.2.2/codevated/".$row['cartegory_icon'];
+
+				array_push($content["interests"] , $data);
+			}
+
+			return json_encode($content);
+		}
+		function getInterestPosts($userId,$interestId){
+			$sql = "SELECT * FROM concepts WHERE interest_cartegory_id='$interestId' ORDER BY dateTime DESC";
+			$query=mysql_query($sql)or die(mysql_error());
+
+			$content["concepts"] = array();
+
+			while($row = mysql_fetch_array($query)){
+					$data = array();
+
+                    $userInterest = $this->checkIfItsUserInterest($userId,$row['interest_cartegory_id']);                
+                    if($userInterest==true){
+                        $interest = $this->getInterestCartegoryItem($row['interest_cartegory_id']);
+                    	$userData = $this->getUserSignUpInfo($row['user_id']);
+
+                    	$data["num_rows"] = $numRows;
+                   		$data["profile_img"] = "http://10.0.2.2/codevated/".$this->getUserProfileImg($userData['user_id']);
+                        $data["cartegory_name"] = $interest['cartegory_name'];
+                        $data["cartegory_icon"] = "http://10.0.2.2/codevated/".$interest['cartegory_icon'];
+                        $data["concept_id"] = $row['concept_id'];
+                        $data["name"] = $row['name'];
+                        $data["content_type"] = $row['content_type'];
+                        $data["username"] = ucwords($userData['username']);
+                        $data["posted_date"] = date('D, d-M-Y',strtotime($row['dateTime']));
+                        $data["views"] = $row['views'];  
+
+                        array_push($content["concepts"] , $data);                     
+                    }                                                          
+            	}
+
+			return json_encode($content);
+		}
+		function getTotalConceptsPerInterest($interestID){
+			$sql = "SELECT * FROM concepts WHERE interest_cartegory_id='$interestID'";
+			$query = mysql_query($sql) or die(mysql_error());
+
+			return mysql_num_rows($query);
+		}
+		function checkIfUsernameExists($username){
+			$sql="SELECT * FROM users WHERE username = '$username'";
+			$query=mysql_query($sql)or die(mysql_error());
+
+			$content["data"] = array();
+			$data = array();
+
+			if(mysql_num_rows($query)>0){
+				
+				$data['fieldState'] = 0;				
+			}else{
+				
+				$data['fieldState'] = 1;	
+			}
+			array_push($content["data"] , $data);
+
+			return json_encode($content);
+		}
+
+		function checkIfEmailExists($email){
+			$sql="SELECT * FROM users WHERE email = '$email'";
+			$query=mysql_query($sql)or die(mysql_error());
+
+			$content["data"] = array();
+			$data = array();
+
+			if(mysql_num_rows($query)>0){
+				
+				$data['fieldState'] = 0;				
+			}else{
+				
+				$data['fieldState'] = 1;	
+			}
+			array_push($content["data"] , $data);
+
+			return json_encode($content);
+		}
+
+		function getLatestConceptsPosted($userID){
+
+			$sql = "SELECT * FROM concepts ORDER BY dateTime DESC";
+			$query = mysql_query($sql) or die(mysql_error());
+			$numRows = mysql_num_rows($query);
+
+			$content["concepts"] = array();			
+
+				while($row = mysql_fetch_array($query)){
+					$data = array();
+
+                    $userInterest = $this->checkIfItsUserInterest($userID,$row['interest_cartegory_id']);                
+                    if($userInterest==true){
+                        $interest = $this->getInterestCartegoryItem($row['interest_cartegory_id']);
+                    	$userData = $this->getUserSignUpInfo($row['user_id']);
+
+                    	$data["num_rows"] = $numRows;
+                   		$data["profile_img"] = "http://10.0.2.2/codevated/".$this->getUserProfileImg($userData['user_id']);
+                        $data["cartegory_name"] = $interest['cartegory_name'];
+                        $data["cartegory_icon"] = "http://10.0.2.2/codevated/".$interest['cartegory_icon'];
+                        $data["concept_id"] = $row['concept_id'];
+                        $data["name"] = $row['name'];
+                        $data["content_type"] = $row['content_type'];
+                        $data["username"] = ucwords($userData['username']);
+                        $data["posted_date"] = date('D, d-M-Y',strtotime($row['dateTime']));
+                        $data["views"] = $row['views'];  
+
+                        array_push($content["concepts"] , $data);                     
+                    }                                                          
+            	}
+            	
+				return json_encode($content);
+		}
+		function getCircles(){
+			$sql = "SELECT * FROM circle";
+			$query = mysql_query($sql)or die(mysql_error());
+			$num = mysql_num_rows($query);
+
+			$content["circles"] = array();
+			$data = array();
+
+			if($num>0){
+				while($row = mysql_fetch_array($query)){					
+
+					$interest = $this->getInterestCartegoryItem($row['interest_cartegory_id']);
+					$creator = $this->getUserSignUpInfo($row['creator_user_id']);
+					
+					$data['circle_id'] = $row['circle_id'];
+					$data['circle_name'] = $row['circle_name'];
+					$data['cartegory_name'] = $interest['cartegory_name'];
+					$data['service_type'] = $row['service_type'];
+					$data['circle_type'] = $row['circle_type'];
+					$data['members'] = $this->getTotalCircleMembers($row['circle_id']);
+					$data['posts'] = $this->getTotalCirclePosts($row['circle_id']);
+					$data['username'] = $creator['username'];
+
+					array_push($content["circles"] , $data); 					
+				}
+			}else{
+				$data["state"] = 0;
+				array_push($content["circles"], $data);
+			}
+
+			return json_encode($content);			
+		}
+		function getAllUserCircles($userID){
+			$sql = "SELECT * FROM circle WHERE creator_user_id='$userID'";
+			$query = mysql_query($sql)or die(mysql_error());
+			$num = mysql_num_rows($query);
+
+			$content["circles"] = array();
+			$data = array();
+
+			if($num>0){
+				while($row = mysql_fetch_array($query)){					
+
+					$interest = $this->getInterestCartegoryItem($row['interest_cartegory_id']);
+					$creator = $this->getUserSignUpInfo($row['creator_user_id']);
+					
+					$data['circle_id'] = $row['circle_id'];
+					$data['circle_name'] = $row['circle_name'];
+					$data['cartegory_name'] = $interest['cartegory_name'];
+					$data['service_type'] = $row['service_type'];
+					$data['circle_type'] = $row['circle_type'];
+					$data['members'] = $this->getTotalCircleMembers($row['circle_id']);
+					$data['posts'] = $this->getTotalCirclePosts($row['circle_id']);
+					$data['username'] = $creator['username'];
+
+					array_push($content["circles"] , $data); 					
+				}
+			}else{
+				$data["state"] = 0;
+				array_push($content["circles"], $data);
+			}
+
+			return json_encode($content);			
+		}
+		function getTotalCircleMembers($circleID){
+			$sql = "SELECT * FROM user_circle WHERE circle_id='$circleID'";
+			$query = mysql_query($sql)or die(mysql_error());
+
+			return mysql_num_rows($query);
+		}
+		function getTotalCirclePosts($circleId){
+			$sql = "SELECT * FROM user_circle WHERE circle_id='$circleId'";
+			$query = mysql_query($sql)or die(mysql_error());
+			$num = 0;
+
+				while($row = mysql_fetch_array($query)){					
+
+					$userID = $row['user_id'];
+					if($this->checkIfUsersConceptsExists($userID) == true){					
+						$num++;
+					}										
+				}
+
+			return $num;
+		}
+		function checkIfUsersConceptsExists($userID){
+			$sql = "SELECT * FROM concepts WHERE user_id='$userID'";
+			$query = mysql_query($sql) or die(mysql_error());
+			$num = mysql_num_rows($query);
+			if($num > 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		function getCircleUsersConcepts($circleId){
+			$sql = "SELECT * FROM user_circle WHERE circle_id='$circleId'";
+			$query = mysql_query($sql)or die(mysql_error());
+			$num = mysql_num_rows($query);
+
+			$content["userConcepts"] = array();
+			$data = array();
+
+			if($num>0){
+				while($row = mysql_fetch_array($query)){					
+
+					$userID = $row['user_id'];
+					$data["user"] = json_decode($this->getUserConcepts($userID));
+					
+					array_push($content["userConcepts"], $data);					
+				}
+			}else{
+				$data["state"] = 0;
+				array_push($content["userConcepts"], $data);
+			}
+			return json_encode($content);
+		}
+		function getUserConcepts($userID){
+			$sql = "SELECT * FROM concepts WHERE user_id='$userID' ORDER BY dateTime DESC";
+			$query = mysql_query($sql) or die(mysql_error());
+			$num = mysql_num_rows($query);
+
+			$content["concepts"] = array();
+			$data = array();
+			
+			if($num>0){
+				while($row = mysql_fetch_array($query)){
+
+                    $userInterest = $this->checkIfItsUserInterest($userID,$row['interest_cartegory_id']);                
+                    if($userInterest==true){
+                        $interest = $this->getInterestCartegoryItem($row['interest_cartegory_id']);
+                    	$userData = $this->getUserSignUpInfo($row['user_id']);
+
+                    	$data["num_rows"] = $numRows;
+                   		$data["profile_img"] = "http://10.0.2.2/codevated/".$this->getUserProfileImg($userData['user_id']);
+                        $data["cartegory_name"] = $interest['cartegory_name'];
+                        $data["cartegory_icon"] = "http://10.0.2.2/codevated/".$interest['cartegory_icon'];
+                        $data["concept_id"] = $row['concept_id'];
+                        $data["name"] = $row['name'];
+                        $data["content_type"] = $row['content_type'];
+                        $data["username"] = ucwords($userData['username']);
+                        $data["posted_date"] = date('D, d-M-Y',strtotime($row['dateTime']));
+                        $data["views"] = $row['views'];  
+
+                        array_push($content["concepts"] , $data);                     
+                    }                                                          
+            	}
+            }else{
+				$data["state"] = 0;
+				array_push($content["concepts"] , $data);
+			}
+            return json_encode($content);		
+		}
+		function postConcept($userID,$title,$content,$cart){
+			$sql = "INSERT INTO concepts(name,user_id,description,interest_cartegory_id,forWho,content_type,content_resources,concept_content,views,dateTime) 
+					VALUES('$title','$userID','none','$cart','none','text','none','$content','0',NOW())";
+			$query = mysql_query($sql)or die(mysql_error());
+			$id = mysql_insert_id();
+
+			$content["concepts"] = array();
+			$data = array();
+
+			if($query){
+				$data['state'] = 1;
+			}else{
+				$data['state'] = 0;
+			}
+			array_push($content["concepts"] , $data);
+
+			return json_encode($content);
+		}
+		function postNotification($destination,$source,$title,$message){
+			$sql = "INSERT INTO notification(user_id,source,title,message,status,dateTime) 
+					VALUES('$destination','$source','$title','$message','unread',NOW())";
+			$query = mysql_query($sql)or die(mysql_error());
+
+			if($query){
+				return true;
+			}else{
+				return false;
+			}
+		}
+		function getAllNotification($userID){
+			$sql = "SELECT * FROM notification WHERE user_id='$userID' ORDER BY dateTime DESC";
+			$query = mysql_query($sql) or die(mysql_error());
+			$num = mysql_num_rows($query);
+
+			$content["notification"] = array();
+			$data = array();
+			
+			if($num>0){
+				while($row = mysql_fetch_array($query)){
+
+					if($row['source'] == "Codevated team"){
+						$source = $row['source'];
+					}else{
+						$userData = $this->getUserSignUpInfo($row['source']);
+                    	$source = ucwords($userData['username']);
+                    } 
+
+                    $data["notification_id"] = $row['notification_id'];
+                    $data["source"] = $source;
+                    $data["title"] = $row['title'];
+                    $data["message"] = $row['message'];
+                    $data["status"] = $row['status'];
+                    $data["posted_date"] = date('D, d-M-Y',strtotime($row['dateTime']));  
+                    $data["posted_date_two"] = date('d-m-Y',strtotime($row['dateTime']));               	
+                                       
+
+                    array_push($content["notification"] , $data);           
+                }
+            }else{
+				$data["state"] = 0;
+				array_push($content["notification"] , $data);
+			}
+            return json_encode($content);
+		}
+		function getTotalUnreadNotifications($userID){
+			$sql = "SELECT * FROM notification WHERE user_id='$userID' AND status='unread'";
+			$query = mysql_query($sql) or die(mysql_error());
+			$num = mysql_num_rows($query);
+
+			$content["notification"] = array();
+			$data = array();
+			
+			if($num>0){
+				$data["unread"] = $num;
+            }else{
+				$data["unread"] = 0;				
+			}
+			array_push($content["notification"] , $data);
+            return json_encode($content);
+		}
+		function getUserInterests($userID){
+			$sql = "SELECT * FROM user_interest WHERE user_id='$userID'";
+			$query = mysql_query($sql) or die(mysql_error());
+			$num = mysql_num_rows($query);
+			$interests = array();
+			$d = 0;
+			if($num > 0){
+				while($row=mysql_fetch_array($query)){
+					$interests[$d] = $row['interest_cartegory_id'];
+					$d++;
+				}
+				return $interests;
+			}
+		}
+		function getUserInterestSpecialists($userID){		
+
+			$content['userMentors'] =array();
+			$specialist = array();
+
+			$interests = $this->getUserInterests($userID);
+
+			for($i=0;$i<count($interests);$i++){
+
+				$userInterestID = $interests[$i];
+				$sql = "SELECT * FROM user_speciality WHERE interest_cartegory_id='$userInterestID'";
+				$query = mysql_query($sql) or die(mysql_error());
+				$num = mysql_num_rows($query);
+
+				if($num > 0){
+					while($row=mysql_fetch_array($query)){	
+
+						if($this->checkIfUserMentor($userID,$row['user_id']) == false){
+
+							$userData = $this->getUserSignUpInfo($row['user_id']);
+							$specialist['interest'] = $userInterestID;
+							$specialist['user_id'] = $row['user_id'];
+							$specialist['username'] = ucwords($userData['username']);
+							$specialist['prof_img'] = $userData['profImg'];
+							$specialist['status'] = "0";
+
+							array_push($content['userMentors'],$specialist);
+						}												
+																
+					}
+				}
+			}
+			return json_encode($content);			
+		}
+		function addMentor($userID,$mentorID){
+			$sql = "INSERT INTO user_mentor(user_id,mentor_id,dateTime) 
+					VALUES('$userID','$mentorID',NOW())";
+			$query = mysql_query($sql)or die(mysql_error());
+
+			$content["mentor"] = array();
+			$data = array();
+
+			if($query){
+				$data['state'] = 1;
+				$userData = $this->getUserSignUpInfo($userID);
+				$title = "I added you as a mentor";
+				$mentorData = $this->getUserSignUpInfo($mentorID);
+				$message = "Hi ".ucwords($mentorData['username']).", i added you as a mentor. I can now view any concepts that you post and have a chat with you. ".ucwords($userData['username']);
+				$this->postNotification($mentorID,$userID,$title,$message);
+			}else{
+				$data['state'] = 0;
+			}
+			array_push($content["mentor"] , $data);
+
+			return json_encode($content);
+		}
+		function removeMentor($userID,$mentorID){
+			$sql = "DELETE FROM user_mentor WHERE user_id='$userID' AND mentor_id='$mentorID'";
+			$query = mysql_query($sql)or die(mysql_error());
+
+			$content["mentor"] = array();
+			$data = array();
+
+			if($query){
+				$data['state'] = 1;
+			}else{
+				$data['state'] = 0;
+			}
+			array_push($content["mentor"] , $data);
+
+			return json_encode($content);
+		}
+		function getAllUserMentors($userID){
+			$sql = "SELECT * FROM user_mentor WHERE user_id='$userID'";
+			$query = mysql_query($sql)or die(mysql_error());
+
+			$content["userMentors"] = array();
+			$data = array();
+
+			if(mysql_num_rows($query) > 0){
+				while($row = mysql_fetch_array($query)){
+					$userData = $this->getUserSignUpInfo($row['mentor_id']);
+					$data['user_id'] = $row['mentor_id'];
+					$data['username'] = ucwords($userData['username']);
+					$data['prof_img'] = $userData['profImg'];					
+					$data['status'] = "1";
+					array_push($content['userMentors'],$data); 						
+				}
+			}else{
+				$data['state'] = 0;
+			}
+			return json_encode($content);
+		}
+		function checkIfUserMentor($userID,$mentorID){
+			$sql = "SELECT * FROM user_mentor WHERE user_id='$userID' AND mentor_id='$mentorID'";
+			$query = mysql_query($sql)or die(mysql_error());
+
+			if(mysql_num_rows($query) > 0){
+				return true;
+			}else{
+				return false;
+			}
+		}
+
 		public function plural( $count, $text ) { 
 			return $count . ( ( $count == 1 ) ? ( " $text" ) : ( " ${text}s" ) );
 		}
