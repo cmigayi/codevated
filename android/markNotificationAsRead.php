@@ -3,6 +3,7 @@
 	$func = new FunctionClass();
 
 	$userId = $func->validateFormInput($_POST['user_id']);
+	$notificationId = $func->validateFormInput($_POST['notification_id']);
 
-	echo $func->getLatestConceptsPosted($userId);
+	echo $func->markNotificationAsRead($notificationId);
 ?>

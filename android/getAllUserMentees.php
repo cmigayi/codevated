@@ -4,5 +4,5 @@
 
 	$userId = $func->validateFormInput($_POST['user_id']);
 
-	echo $func->getLatestConceptsPosted($userId);
+	echo $func->getAllUserMentees($userId);
 ?>

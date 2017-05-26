@@ -3,6 +3,7 @@
 	$func = new FunctionClass();
 
 	$userId = $func->validateFormInput($_POST['user_id']);
+	$image = $func->validateFormInput($_POST['pic']);
 
-	echo $func->getLatestConceptsPosted($userId);
+	echo $func->uploadUserProfilePic($userId,$image);	
 ?>

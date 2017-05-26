@@ -1,5 +1,4 @@
-<?php
-	
+<?php	
 	require_once("../classes/function_class.php");	
 	$func = new FunctionClass();
 
@@ -8,5 +7,5 @@
 	$content = $func->validateFormInput($_POST['content']);
 	$cart = $func->validateFormInput($_POST['interest_id']);
 
-	echo $func->postConcept($userId,$title,$content,1);
+	echo $func->postConcept($userId,$title,$content,$cart);
 ?>

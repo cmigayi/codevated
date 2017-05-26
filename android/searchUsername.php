@@ -3,6 +3,7 @@
 	$func = new FunctionClass();
 
 	$userId = $func->validateFormInput($_POST['user_id']);
+	$username = $func->validateFormInput($_POST['username']);
 
-	echo $func->getLatestConceptsPosted($userId);
+	echo $func->searchUsername($username);
 ?>

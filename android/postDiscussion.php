@@ -3,6 +3,7 @@
 	$func = new FunctionClass();
 
 	$userId = $func->validateFormInput($_POST['user_id']);
+	$topic = $func->validateFormInput($_POST['topic']);
 
-	echo $func->getLatestConceptsPosted($userId);
+	echo $func->postDiscussion($userId,$topic);
 ?>

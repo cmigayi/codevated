@@ -24,7 +24,7 @@
 		$data['user_id'] = $row['user_id'];
 		$data['username'] = $row['username'];
 		$data['email'] = $row['email'];
-		$data['pass'] = $row['password'];
+		$data['pass'] = md5($row['password']);
 		$data['phone'] = $row['phone'];
 		$data['gender'] = $row['gender'];
 		$data['codevatedTeam'] = $row['codevatedTeam'];

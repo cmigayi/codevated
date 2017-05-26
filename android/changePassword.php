@@ -3,6 +3,7 @@
 	$func = new FunctionClass();
 
 	$userId = $func->validateFormInput($_POST['user_id']);
+	$pass = $func->validateFormInput($_POST['pass']);
 
-	echo $func->getLatestConceptsPosted($userId);
+	echo $func->changeUserPassword($userId,$pass);
 ?>

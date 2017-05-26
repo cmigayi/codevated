@@ -3,6 +3,7 @@
 	$func = new FunctionClass();
 
 	$userId = $func->validateFormInput($_POST['user_id']);
+	$menteeId = $func->validateFormInput($_POST['mentee_id']);
 
-	echo $func->getLatestConceptsPosted($userId);
+	echo $func->addMentee($userId,$menteeId);
 ?>

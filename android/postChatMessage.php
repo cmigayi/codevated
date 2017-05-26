@@ -3,6 +3,8 @@
 	$func = new FunctionClass();
 
 	$userId = $func->validateFormInput($_POST['user_id']);
+	$respId = $func->validateFormInput($_POST['respondent']);
+	$msg = $_POST['message'];
 
-	echo $func->getLatestConceptsPosted($userId);
+	echo $func->postChatMessage($userId,$respId,$msg);
 ?>
